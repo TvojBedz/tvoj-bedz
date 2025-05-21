@@ -4,7 +4,7 @@ import Link from "next/link";
 interface LinkTextProps {
     href: string;
     text: string;
-    isActive: boolean;
+    isActive?: boolean;
     setOpen?: (open: boolean) => void;
 }
 

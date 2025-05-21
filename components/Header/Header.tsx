@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import MobileNavigation from "./MobileNavigation";
 import LinkText from "./LinkText";
 import { openLink } from "@/utils/links";
+import { NAV_ITEMS } from "@/constants/navItems";
 
 export default function Header() {
     const [open, setOpen] = useState(false);
@@ -46,22 +47,14 @@ export default function Header() {
 
                 {/* Desktop nav */}
                 <nav className="hidden md:flex items-center space-x-6 text-sm">
-                    <LinkText
-                        isActive={activeSection === "kako-funkcionise"}
-                        href="kako-funkcionise"
-                        text="Kako funkcioniše"
-                    />
-
-                    <LinkText
-                        isActive={activeSection === "bedzevi"}
-                        href="bedzevi"
-                        text="Bedževi"
-                    />
-                    <LinkText
-                        isActive={activeSection === "kontakt"}
-                        href="kontakt"
-                        text="Kontakt"
-                    />
+                    {NAV_ITEMS.map((item) => (
+                        <LinkText
+                            key={item.href}
+                            href={item.href}
+                            text={item.text}
+                            isActive={activeSection === item.href}
+                        />
+                    ))}
                     <Button>Prijavi se</Button>
                 </nav>
 

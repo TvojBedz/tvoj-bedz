@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button } from '../ui/button';
 import LinkText from './LinkText';
+import { NAV_ITEMS } from '@/constants/navItems';
 
 interface MobileNavigationProps {
     open: boolean;
@@ -15,24 +16,15 @@ const MobileNavigation = ({ open, setOpen, activeSection }: MobileNavigationProp
 
     return (
         <nav className="md:hidden absolute top-[64px] left-0 w-full bg-white shadow-md flex flex-col px-2 pb-4 pt-4 gap-2 z-40">
-            <LinkText
-                href="kako-funkcionise"
-                text="Kako funkcioniše"
-                isActive={activeSection === "kako-funkcionise"}
-                setOpen={setOpen}
-            />
-            <LinkText
-                href="bedzevi"
-                text="Bedževi"
-                isActive={activeSection === "bedzevi"}
-                setOpen={setOpen}
-            />
-            <LinkText
-                href="kontakt"
-                text="Kontakt"
-                isActive={activeSection === "kontakt"}
-                setOpen={setOpen}
-            />
+            {NAV_ITEMS.map((item) => (
+                <LinkText
+                    key={item.href}
+                    href={item.href}
+                    text={item.text}
+                    isActive={activeSection === item.href}
+                    setOpen={setOpen}
+                />
+            ))}
             <Button className="w-full mt-2" onClick={() => setOpen(false)}>
                 Prijavi se
             </Button>
