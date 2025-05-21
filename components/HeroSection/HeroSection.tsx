@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 
 export default function HeroSection() {
     return (
-        <section id='hero' className="min-h-dvh max-h-dvh w-full bg-gradient-to-br from-blue-20 to-white px-6 md:px-20 py-10 flex flex-col-reverse md:flex-row items-center justify-end gap-4">
+        <section id='hero' className="min-h-dvh max-h-dvh w-full bg-gradient-to-br from-blue-20 to-white px-6 md:px-30 py-10 flex flex-col-reverse md:flex-row items-center justify-end gap-4">
             <div className="w-full md:w-1/2 text-center md:text-left space-y-4">
                 <h1 className="text-4xl sm:text-5xl font-extrabold text-gray-900 leading-tight">
                     Dizajniraj <span className="text-blue-600">bedž</span> koji ćeš ponosno nositi!
