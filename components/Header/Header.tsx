@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import MobileNavigation from "./MobileNavigation";
+import { openLink } from "@/utils/links";
+import LinkText from "./LinkText";
 
 export default function Header() {
     const [open, setOpen] = useState(false);
@@ -33,11 +35,6 @@ export default function Header() {
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
-    const navLinkClass = (id: string) =>
-        `py-2 px-3 rounded transition-colors ${activeSection === id
-            ? "text-blue-600 font-semibold"
-            : "hover:bg-gray-100 text-gray-700"
-        }`;
 
     return (
         <header className="w-full border-b bg-white shadow-sm sticky top-0 z-50">
@@ -49,15 +46,22 @@ export default function Header() {
 
                 {/* Desktop nav */}
                 <nav className="hidden md:flex items-center space-x-6 text-sm">
-                    <Link href="/#kako-funkcionise" className={navLinkClass("kako-funkcionise")}>
-                        Kako funkcioniše
-                    </Link>
-                    <Link href="/#bedzevi" className={navLinkClass("bedzevi")}>
-                        Bedževi
-                    </Link>
-                    <Link href="/#kontakt" className={navLinkClass("kontakt")}>
-                        Kontakt
-                    </Link>
+                    <LinkText
+                        isActive={activeSection === "kako-funkcionise"}
+                        href="/#kako-funkcionise"
+                        text="Kako funkcioniše"
+                    />
+
+                    <LinkText
+                        isActive={activeSection === "bedzevi"}
+                        href="/#bedzevi"
+                        text="Bedževi"
+                    />
+                    <LinkText
+                        isActive={activeSection === "kontakt"}
+                        href="/#kontakt"
+                        text="Kontakt"
+                    />
                     <Button>Prijavi se</Button>
                 </nav>
 
@@ -69,7 +73,7 @@ export default function Header() {
             <MobileNavigation
                 open={open}
                 setOpen={setOpen}
-                navLinkClass={navLinkClass}
+                activeSection={activeSection}
             />
 
         </header>
