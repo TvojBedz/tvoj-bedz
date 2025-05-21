@@ -1,15 +1,10 @@
+import HeroSection from "@/components/HeroSection/HeroSection";
+
 export default function Home() {
   return (
     <div className="font-sans">
       <main className="flex flex-col">
-        <section className="min-h-screen flex flex-col items-center justify-center px-6 bg-gray-100 text-center">
-          <div>
-            <h1 className="text-4xl font-bold mb-4">Dobrodošli na TvojBedž</h1>
-            <p className="max-w-xl mx-auto text-gray-700">
-              Kreiraj i poruči svoj personalizovani bedž uz samo par klikova.
-            </p>
-          </div>
-        </section>
+        <HeroSection />
 
         <section
           id="kako-funkcionise"
