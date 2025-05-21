@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 // import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header/Header";
+import Footer from "@/components/Footer/Footer";
 
 // const geistSans = Geist({
 //   variable: "--font-geist-sans",
@@ -24,7 +25,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <body>
         <Header />
         <main className="min-h-screen">{children}</main>
-        {/* Footer ide kasnije */}
+        <Footer />
       </body>
     </html>
   );
