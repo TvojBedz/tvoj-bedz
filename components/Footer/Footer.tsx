@@ -1,3 +1,5 @@
+"use client";
+
 import { NAV_ITEMS } from "@/constants/navItems";
 import { openLink } from "@/utils/links";
 import Link from "next/link";
