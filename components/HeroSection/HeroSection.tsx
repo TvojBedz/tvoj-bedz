@@ -36,7 +36,7 @@ export default function HeroSection() {
                     alt="Tvoj Bedž Ilustracija"
                     width={500}
                     height={500}
-                    className="w-[260px] sm:w-[320px] md:w-[500px] lg:w-[600px] h-auto"
+                    className="w-[240px] sm:w-[300px] md:w-[500px] lg:w-[600px] h-auto"
                     priority
                 />
             </div>
