@@ -12,7 +12,7 @@ export default function Header() {
 
     useEffect(() => {
         const handleScroll = () => {
-            const sections = ["kako-funkcionise", "bedzevi", "kontakt"];
+            const sections = ["hero", "kako-funkcionise", "bedzevi", "kontakt"];
             const scrollPos = window.scrollY;
 
             for (const id of sections) {
@@ -43,7 +43,7 @@ export default function Header() {
         <header className="w-full border-b bg-white shadow-sm sticky top-0 z-50">
             <div className="container mx-auto flex items-center justify-between p-4">
                 {/* Logo */}
-                <Link href="/" className="text-2xl font-bold text-black">
+                <Link href="/#hero" className="text-2xl font-bold text-black">
                     TvojBedž
                 </Link>
 
