@@ -15,7 +15,7 @@ export default function Header() {
             const sections = ["kako-funkcionise", "bedzevi", "kontakt"];
             const scrollPos = window.scrollY;
 
-            for (let id of sections) {
+            for (const id of sections) {
                 const el = document.getElementById(id);
                 if (el) {
                     const offsetTop = el.offsetTop;
