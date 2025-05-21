@@ -25,7 +25,9 @@ const LinkText = ({ href, text, isActive, setOpen }: LinkTextProps) => {
             scroll={false}
             onClick={(e) => {
                 openLink(e, "bedzevi")
-                setOpen && setOpen(false)
+                if (setOpen) {
+                    setOpen(false);
+                }
             }}
         >
             {text}

@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import MobileNavigation from "./MobileNavigation";
-import { openLink } from "@/utils/links";
 import LinkText from "./LinkText";
 
 export default function Header() {
