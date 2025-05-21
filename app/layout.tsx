@@ -24,7 +24,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <html lang="sr">
       <body suppressHydrationWarning={true}>
         <Header />
-        <main className="min-h-screen">{children}</main>
+        <main className="md:px-20 py-10 bg-gray-50 min-h-screen flex flex-col items-center">
+          {children}
+        </main>
         <Footer />
       </body>
     </html>
