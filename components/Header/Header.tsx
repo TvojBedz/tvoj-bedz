@@ -6,6 +6,7 @@ import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import MobileNavigation from "./MobileNavigation";
 import LinkText from "./LinkText";
+import { openLink } from "@/utils/links";
 
 export default function Header() {
     const [open, setOpen] = useState(false);
@@ -39,7 +40,7 @@ export default function Header() {
         <header className="w-full border-b bg-white shadow-sm sticky top-0 z-50">
             <div className="container mx-auto flex items-center justify-between p-4 px-6 md:px-20">
                 {/* Logo */}
-                <Link href="/#hero" className="text-2xl font-bold text-black">
+                <Link href="/#hero" scroll={false} onClick={(e) => openLink(e, 'hero')} className="text-2xl font-bold text-black">
                     TvojBedž
                 </Link>
 
@@ -47,18 +48,18 @@ export default function Header() {
                 <nav className="hidden md:flex items-center space-x-6 text-sm">
                     <LinkText
                         isActive={activeSection === "kako-funkcionise"}
-                        href="/#kako-funkcionise"
+                        href="kako-funkcionise"
                         text="Kako funkcioniše"
                     />
 
                     <LinkText
                         isActive={activeSection === "bedzevi"}
-                        href="/#bedzevi"
+                        href="bedzevi"
                         text="Bedževi"
                     />
                     <LinkText
                         isActive={activeSection === "kontakt"}
-                        href="/#kontakt"
+                        href="kontakt"
                         text="Kontakt"
                     />
                     <Button>Prijavi se</Button>

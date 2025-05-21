@@ -20,11 +20,11 @@ const LinkText = ({ href, text, isActive, setOpen }: LinkTextProps) => {
 
     return (
         <Link
-            href={href}
+            href={`/#${href}`}
             className={navLinkClass()}
             scroll={false}
             onClick={(e) => {
-                openLink(e, "bedzevi")
+                openLink(e, href);
                 if (setOpen) {
                     setOpen(false);
                 }
