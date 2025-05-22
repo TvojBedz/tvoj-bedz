@@ -1,61 +1,93 @@
 "use client";
 
-import { Card, CardContent } from "@/components/ui/card";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const reviews = [
     {
         name: "Jovana M.",
-        avatar: "/avatars/jovana.jpg",
+        avatar: "/test.jpeg",
         text: "TvojBedž mi je omogućio da napravim bedž za devojačko veče! Sve pohvale!",
     },
     {
         name: "Nikola P.",
-        avatar: "/avatars/nikola.jpg",
+        avatar: "/test.jpeg",
         text: "Kvalitet štampe me iznenadio! Bedževi su stigli brzo i lepo zapakovani.",
     },
     {
         name: "Marija K.",
-        avatar: "/avatars/marija.jpg",
+        avatar: "/test.jpeg",
         text: "Toliko je jednostavno da napravim svoj dizajn! Preporučujem svima.",
     },
 ];
 
-export default function UserReviews() {
+export default function UserReviewsCarousel() {
+    const [index, setIndex] = useState(0);
+
+    const next = () => setIndex((prev) => (prev + 1) % reviews.length);
+    const prev = () =>
+        setIndex((prev) => (prev - 1 + reviews.length) % reviews.length);
+
     return (
         <section className="py-12 bg-gray-50" id="recenzije">
-            <div className="max-w-5xl mx-auto px-4 text-center">
-                <motion.h2
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}
-                    className="text-3xl font-bold mb-8"
-                >
-                    Recenzije korisnika
-                </motion.h2>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    {reviews.map((review, index) => (
+            <div className="max-w-xl mx-auto px-4 text-center min-h-screen">
+                <h2 className="text-3xl font-bold mb-8">Recenzije korisnika</h2>
+                <div className="relative flex items-center justify-center">
+                    {/* Strelica levo */}
+                    <button
+                        onClick={prev}
+                        className="absolute left-[-1rem] md:left-[-4rem] p-2 rounded-full bg-white shadow hover:bg-gray-100 transition z-10"
+                    >
+                        <ChevronLeft className="w-6 h-6" />
+                    </button>
+
+                    {/* Recenzija */}
+                    <AnimatePresence mode="wait">
                         <motion.div
                             key={index}
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: index * 0.2, duration: 0.5 }}
+                            initial={{ opacity: 0, x: 50 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            exit={{ opacity: 0, x: -50 }}
+                            transition={{ duration: 0.5 }}
+                            className="p-6 bg-white rounded-2xl shadow-lg md:max-w-md max-w-[70vw]"
                         >
-                            <Card className="p-4 shadow-lg hover:shadow-xl transition duration-300">
-                                <CardContent className="flex flex-col items-center text-center">
-                                    <Avatar className="mb-4">
-                                        <AvatarImage src={review.avatar} alt={review.name} />
-                                        <AvatarFallback>{review.name.charAt(0)}</AvatarFallback>
-                                    </Avatar>
-                                    <p className="text-lg font-medium">{review.name}</p>
-                                    <p className="text-sm text-gray-600 mt-2">{review.text}</p>
-                                </CardContent>
-                            </Card>
+                            <div className="flex flex-col items-center min-h-[300px]">
+                                <div className="w-20 h-20 rounded-full overflow-hidden bg-gray-200 mb-4">
+                                    <img
+                                        src={reviews[index].avatar}
+                                        alt={reviews[index].name}
+                                        className="w-full h-full object-cover"
+                                    />
+                                </div>
+                                <p className="text-lg font-semibold">{reviews[index].name}</p>
+                                <p className="text-gray-600 mt-3">{reviews[index].text}</p>
+                            </div>
                         </motion.div>
-                    ))}
+                    </AnimatePresence>
+
+                    {/* Strelica desno */}
+                    <button
+                        onClick={next}
+                        className="absolute right-[-1rem] md:right-[-4rem] p-2 rounded-full bg-white shadow hover:bg-gray-100 transition z-10"
+                    >
+                        <ChevronRight className="w-6 h-6" />
+                    </button>
+                </div >
+
+                {/* Indicators */}
+                <div className="flex justify-center mt-4 gap-2" >
+                    {
+                        reviews.map((_, i) => (
+                            <div
+                                key={i}
+                                className={`w-3 h-3 rounded-full ${i === index ? "bg-orange-500" : "bg-gray-300"
+                                    }`}
+                            ></div>
+                        ))
+                    }
                 </div>
-            </div>
-        </section>
+            </div >
+        </section >
     );
 }
