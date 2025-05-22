@@ -1,6 +1,5 @@
 "use server";
 
-import { log } from "console";
 import { cookies } from "next/headers";
 
 export async function addToCart(formData: FormData) {
@@ -19,8 +18,6 @@ export async function addToCart(formData: FormData) {
     } else {
         cart.push({ id, name, image, price, quantity: 1 });
     }
-
-    log
 
     cookieStore.set("cart", JSON.stringify(cart), {
         path: "/",
