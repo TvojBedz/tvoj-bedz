@@ -44,7 +44,7 @@ export default function Header() {
         <header className={`w-full border-b bg-white shadow-sm sticky top-0 z-50 transition-all duration-300 ${!open ? 'backdrop-blur-md bg-white/70' : ''}`}>
             <div className="container mx-auto flex items-center justify-between p-4 px-6 md:px-20">
                 {/* Logo */}
-                <Link href="/#hero" scroll={false} onClick={(e) => openLink(e, 'hero')} className="text-2xl font-bold text-black">
+                <Link href="/" className="text-2xl font-bold text-black">
                     TvojBedž
                 </Link>
 
