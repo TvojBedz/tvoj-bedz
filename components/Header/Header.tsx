@@ -18,7 +18,7 @@ export default function Header() {
 
     useEffect(() => {
         const handleScroll = () => {
-            const sections = ["hero", "kako-funkcionise", "bedzevi", "kontakt"];
+            const sections = [...NAV_ITEMS.map((item => item.href), 'hero')] as string[];
             const scrollPos = window.scrollY;
 
             for (const id of sections) {
