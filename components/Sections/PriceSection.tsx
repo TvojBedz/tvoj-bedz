@@ -3,7 +3,7 @@ import { BadgeDollarSign, Gift, Users } from "lucide-react";
 
 export default function PricingSection() {
     return (
-        <section className="w-full py-20 " id="cenovnik">
+        <section className="w-full py-20 px-5" id="cenovnik">
             <div className="max-w-6xl mx-auto px-4 text-center">
                 <h2 className="text-4xl font-bold mb-4">
                     Izaberi paket koji ti odgovara
@@ -17,7 +17,7 @@ export default function PricingSection() {
                     {/* Pojedinačni */}
                     <div>
                         <Card className="rounded-2xl shadow-md hover:scale-[1.02] transition-transform duration-300">
-                            <CardContent className="p-6">
+                            <CardContent className="p-6 text-center flex flex-col items-center">
                                 <BadgeDollarSign className="w-8 h-8 mx-auto text-orange-600 mb-2" />
                                 <h3 className="text-xl font-semibold mb-2">Pojedinačni</h3>
                                 <p className="text-3xl font-bold text-orange-600 mb-4">250 RSD</p>
@@ -33,7 +33,7 @@ export default function PricingSection() {
                     {/* Mini Paket */}
                     <div>
                         <Card className="rounded-2xl shadow-md border border-orange-500 hover:scale-[1.02] transition-transform duration-300">
-                            <CardContent className="p-6">
+                            <CardContent className="p-6 text-center flex flex-col items-center">
                                 <Gift className="w-8 h-8 mx-auto text-orange-600 mb-2" />
                                 <h3 className="text-xl font-semibold mb-2">Mini Paket (5 kom)</h3>
                                 <p className="text-3xl font-bold text-orange-600 mb-4">1.000 RSD</p>
@@ -48,7 +48,7 @@ export default function PricingSection() {
                     {/* Grupni Paket */}
                     <div>
                         <Card className="rounded-2xl shadow-md hover:scale-[1.02] transition-transform duration-300">
-                            <CardContent className="p-6">
+                            <CardContent className="p-6 text-center flex flex-col items-center">
                                 <Users className="w-8 h-8 mx-auto text-orange-600 mb-2" />
                                 <h3 className="text-xl font-semibold mb-2">Grupni Paket (20+ kom)</h3>
                                 <p className="text-3xl font-bold text-orange-600 mb-4">3.000 RSD</p>
