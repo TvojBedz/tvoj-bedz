@@ -26,7 +26,7 @@ const MobileNavigation = ({ open, setOpen, activeSection }: MobileNavigationProp
                 />
             ))}
             <Button className="w-full mt-2" onClick={() => setOpen(false)}>
-                Prijavi se
+                Dizajniraj svoj bedž
             </Button>
         </nav>
     );

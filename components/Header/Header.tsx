@@ -55,7 +55,9 @@ export default function Header() {
                             isActive={activeSection === item.href}
                         />
                     ))}
-                    <Button>Prijavi se</Button>
+                    <Button>
+                        Dizajniraj svoj bedž
+                    </Button>
                 </nav>
 
                 <button onClick={() => setOpen(!open)} className="md:hidden text-gray-700">
