@@ -16,6 +16,17 @@ export default function AddToCartButton({ product }: { product: any }) {
         });
     };
 
+    if (isPending) {
+        return (
+            <Button
+                disabled
+                className="w-full transition-transform hover:scale-[1.02] hover:shadow-md"
+            >
+                Dodajem u korpu...
+            </Button>
+        );
+    }
+
     return (
         <form action={handleSubmit} className="w-full">
             <input type="hidden" name="productId" value={product.id} />

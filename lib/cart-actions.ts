@@ -4,8 +4,6 @@ import { log } from "console";
 import { cookies } from "next/headers";
 
 export async function addToCart(formData: FormData) {
-    log("Adding to cart");
-    log(formData);
     const id = formData.get("productId");
     const name = formData.get("productName");
     const image = formData.get("productImage");
@@ -13,7 +11,7 @@ export async function addToCart(formData: FormData) {
 
     const cookieStore = await cookies();
     const raw = cookieStore.get("cart")?.value;
-    let cart = raw ? JSON.parse(raw) : [];
+    const cart = raw ? JSON.parse(raw) : [];
 
     const existing = cart.find((item: any) => item.id === id);
     if (existing) {
