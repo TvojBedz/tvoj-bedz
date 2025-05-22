@@ -3,7 +3,7 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Metadata } from "next";
 // import { addToCart } from "@/lib/cart-actions";
-import { cookies } from "next/headers";
+// import { cookies } from "next/headers";
 
 export const metadata: Metadata = {
     title: "Shop | TvojBedž",
