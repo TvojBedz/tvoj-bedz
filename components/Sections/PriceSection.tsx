@@ -1,5 +1,4 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { BadgeDollarSign, Gift, Users } from "lucide-react";
 
 export default function PricingSection() {
