@@ -32,14 +32,14 @@ export default function UserReviewsCarousel() {
     return (
         <section className="py-12 bg-gray-50" id="recenzije">
             <div className="max-w-xl mx-auto px-4 text-center min-h-screen">
-                <h2 className="text-3xl font-bold mb-8">Recenzije korisnika</h2>
+                <h2 className="text-3xl font-bold mb-12">Recenzije korisnika</h2>
                 <div className="relative flex items-center justify-center gap-2">
                     {/* Strelica levo */}
                     <button
                         onClick={prev}
                         className="p-2 rounded-full bg-white shadow hover:bg-gray-100 transition z-10"
                     >
-                        <ChevronLeft className="w-6 h-6" />
+                        <ChevronLeft className="w-4 h-4" />
                     </button>
 
                     {/* Recenzija */}
@@ -71,7 +71,7 @@ export default function UserReviewsCarousel() {
                         onClick={next}
                         className=" p-2 rounded-full bg-white shadow hover:bg-gray-100 transition z-10"
                     >
-                        <ChevronRight className="w-6 h-6" />
+                        <ChevronRight className="w-4 h-4" />
                     </button>
                 </div >
 
