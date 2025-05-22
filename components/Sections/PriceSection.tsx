@@ -17,7 +17,7 @@ export default function PricingSection() {
                     {/* Pojedinačni */}
                     <div>
                         <Card className="rounded-2xl shadow-md hover:scale-[1.02] transition-transform duration-300">
-                            <CardContent className="p-6 text-center flex flex-col items-center">
+                            <CardContent className="py-2 text-center flex flex-col items-center">
                                 <BadgeDollarSign className="w-8 h-8 mx-auto text-orange-600 mb-2" />
                                 <h3 className="text-xl font-semibold mb-2">Pojedinačni</h3>
                                 <p className="text-3xl font-bold text-orange-600 mb-4">250 RSD</p>
