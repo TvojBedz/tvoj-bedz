@@ -7,7 +7,7 @@ export default function HeroSection() {
         <section id='hero' className=" py-10 px-6  w-full flex flex-col-reverse md:flex-row items-center justify-end gap-4 max-w-7xl mx-auto md:min-h-screen">
             {/* Left side */}
             <div className="w-full  text-center md:text-left space-y-4">
-                <h1 className="text-5xl sm:text-6xl font-extrabold text-gray-900 leading-tight">
+                <h1 className="text-4xl sm:text-6xl font-extrabold text-gray-900 leading-tight">
                     Tvoj <span className="text-orange-600">Bedž.</span> Tvoja Priča.
                 </h1>
                 <p className="text-gray-700 text-xl max-w-md mx-auto md:mx-0">
