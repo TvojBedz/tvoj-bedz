@@ -1,6 +1,7 @@
 import HeroSection from "@/components/Sections/HeroSection";
 import HowItWorks from "@/components/Sections/HowItWorks";
 import PricingSection from "@/components/Sections/PriceSection";
+import UserReviews from "@/components/Sections/UserReviews";
 
 export default function Home() {
   return (
@@ -9,6 +10,7 @@ export default function Home() {
         <HeroSection />
         <HowItWorks />
         <PricingSection />
+        <UserReviews />
 
         <section
           id="bedzevi"
