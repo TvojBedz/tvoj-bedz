@@ -1,5 +1,3 @@
-// app/shop/page.tsx
-import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Metadata } from "next";
 
