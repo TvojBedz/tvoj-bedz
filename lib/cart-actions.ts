@@ -13,7 +13,7 @@ export async function addToCart(formData: FormData) {
     const raw = cookieStore.get("cart")?.value;
     const cart = raw ? JSON.parse(raw) : [];
 
-    const existing = cart.find((item: any) => item.id === id);
+    const existing = cart.find((item: Badge) => item.id === id);
     if (existing) {
         existing.quantity += 1;
     } else {

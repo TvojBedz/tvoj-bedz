@@ -5,7 +5,7 @@ import { addToCart } from "@/lib/cart-actions";
 import { useCart } from "@/context/CartContext";
 import { Button } from "@/components/ui/button";
 
-export default function AddToCartButton({ product }: { product: any }) {
+export default function AddToCartButton({ product }: { product: Badge }) {
     const { refreshCart } = useCart();
     const [isPending, startTransition] = useTransition();
 
