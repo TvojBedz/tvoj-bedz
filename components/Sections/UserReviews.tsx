@@ -33,11 +33,11 @@ export default function UserReviewsCarousel() {
         <section className="py-12 bg-gray-50" id="recenzije">
             <div className="max-w-xl mx-auto px-4 text-center min-h-screen">
                 <h2 className="text-3xl font-bold mb-8">Recenzije korisnika</h2>
-                <div className="relative flex items-center justify-center">
+                <div className="relative flex items-center justify-center gap-4">
                     {/* Strelica levo */}
                     <button
                         onClick={prev}
-                        className="absolute left-[-1rem] md:left-[-4rem] p-2 rounded-full bg-white shadow hover:bg-gray-100 transition z-10"
+                        className="p-4 rounded-full bg-white shadow hover:bg-gray-100 transition z-10"
                     >
                         <ChevronLeft className="w-6 h-6" />
                     </button>
@@ -50,9 +50,9 @@ export default function UserReviewsCarousel() {
                             animate={{ opacity: 1, x: 0 }}
                             exit={{ opacity: 0, x: -50 }}
                             transition={{ duration: 0.5 }}
-                            className="p-6 bg-white rounded-2xl shadow-lg md:max-w-md max-w-[70vw]"
+                            className="p-2 bg-white rounded-2xl shadow-lg md:max-w-md max-w-[70vw]"
                         >
-                            <div className="flex flex-col items-center min-h-[300px]">
+                            <div className="flex flex-col items-center min-h-[250px]">
                                 <div className="w-20 h-20 rounded-full overflow-hidden bg-gray-200 mb-4">
                                     <img
                                         src={reviews[index].avatar}
@@ -69,7 +69,7 @@ export default function UserReviewsCarousel() {
                     {/* Strelica desno */}
                     <button
                         onClick={next}
-                        className="absolute right-[-1rem] md:right-[-4rem] p-2 rounded-full bg-white shadow hover:bg-gray-100 transition z-10"
+                        className=" p-2 rounded-full bg-white shadow hover:bg-gray-100 transition z-10"
                     >
                         <ChevronRight className="w-6 h-6" />
                     </button>
