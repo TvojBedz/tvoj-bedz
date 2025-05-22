@@ -13,7 +13,7 @@ const LinkText = ({ href, text, isActive, setOpen }: LinkTextProps) => {
 
     const navLinkClass = () =>
         `py-2 px-3 rounded transition-colors ${isActive
-            ? "text-blue-600 font-semibold"
+            ? "text-orange-600 font-semibold"
             : "hover:bg-gray-100 text-gray-700"
         }`;
 

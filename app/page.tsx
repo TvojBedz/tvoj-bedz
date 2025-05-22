@@ -1,23 +1,12 @@
-import HeroSection from "@/components/HeroSection/HeroSection";
+import HeroSection from "@/components/Sections/HeroSection";
+import HowItWorks from "@/components/Sections/HowItWorks";
 
 export default function Home() {
   return (
     <div className="font-sans">
       <main className="flex flex-col">
         <HeroSection />
-
-        <section
-          id="kako-funkcionise"
-          className="min-h-screen flex flex-col items-center justify-center px-6 bg-white text-center"
-        >
-          <div>
-            <h2 className="text-3xl font-semibold mb-6">Kako funkcioniše</h2>
-            <p className="max-w-screen-md mx-auto text-gray-700 text-lg">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam et
-              orci nec urna fermentum commodo.
-            </p>
-          </div>
-        </section>
+        <HowItWorks />
 
         <section
           id="bedzevi"
