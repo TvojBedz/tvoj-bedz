@@ -1,5 +1,7 @@
-import { Button } from "@/components/ui/button";
 import { Metadata } from "next";
+import Image from "next/image";
+import AddToCartButton from "./AddToCartButton";
+import { returnPaginatedPages } from "@/utils/pagination";
 
 export const metadata: Metadata = {
     title: "Shop | TvojBedž",
@@ -22,21 +24,7 @@ export default function Shop({ page }: { page: number }) {
     const startIndex = (page - 1) * PRODUCTS_PER_PAGE;
     const currentProducts = allProducts.slice(startIndex, startIndex + PRODUCTS_PER_PAGE);
 
-    const visiblePages = Array.from({ length: totalPages }, (_, i) => i + 1).filter(p => {
-        return (
-            p === 1 ||
-            p === totalPages ||
-            Math.abs(p - page) <= 1
-        );
-    });
-
-    const paginatedPages = visiblePages.reduce<(number | string)[]>((acc, curr, i, arr) => {
-        if (i > 0 && curr - (arr[i - 1] as number) > 1) {
-            acc.push("...");
-        }
-        acc.push(curr);
-        return acc;
-    }, []);
+    const paginatedPages = returnPaginatedPages(page, totalPages);
 
 
     return (
@@ -52,9 +40,10 @@ export default function Shop({ page }: { page: number }) {
                         className="bg-white/70 backdrop-blur-md rounded-2xl shadow-xl p-6 flex flex-col items-center text-center transition-all border border-transparent hover:border-orange-500"
                     >
                         <div className="relative w-32 h-32 mb-4">
-                            <img
+                            <Image
                                 src={product.image}
                                 alt={product.name}
+                                fill
                                 title={product.name}
                                 className="rounded-full object-cover shadow-sm"
                             />
@@ -62,13 +51,10 @@ export default function Shop({ page }: { page: number }) {
                         <h2 className="text-xl font-semibold mb-1 text-gray-800">
                             {product.name}
                         </h2>
-                        <p className="text-sm text-orange-600 font-semibold mb-4">{product.price}</p>
-                        <Button
-                            variant="default"
-                            className="w-full transition-transform hover:scale-[1.02] hover:shadow-md"
-                        >
-                            Dodaj u korpu
-                        </Button>
+                        <p className="text-sm text-orange-600 font-semibold mb-4">
+                            {product.price}
+                        </p>
+                        <AddToCartButton product={product} />
                     </div>
                 ))}
             </div>

@@ -8,12 +8,13 @@ import MobileNavigation from "./MobileNavigation";
 import LinkText from "./LinkText";
 import { NAV_ITEMS } from "@/constants/navItems";
 import { useRouter } from "next/navigation";
+import { useCart } from "@/context/CartContext";
 
 export default function Header() {
     const [open, setOpen] = useState(false);
     const [activeSection, setActiveSection] = useState<string>("");
     const router = useRouter();
-    const cartCount = 1; // Replace with actual cart count from your state management
+    const { count } = useCart();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -66,9 +67,9 @@ export default function Header() {
                         aria-label="Korpa"
                     >
                         <ShoppingCart className="w-6 h-6 text-black cursor-pointer hover:text-orange-600 transition duration-200" />
-                        {cartCount > 0 && (
+                        {count > 0 && (
                             <span className="absolute -top-1 -right-1 bg-orange-600 text-white text-xs font-bold px-1.5 py-0.5 rounded-full">
-                                {cartCount}
+                                {count}
                             </span>
                         )}
                     </button>
@@ -81,9 +82,9 @@ export default function Header() {
                         aria-label="Korpa"
                     >
                         <ShoppingCart className="w-6 h-6 text-black cursor-pointer hover:text-orange-600 transition duration-200" />
-                        {cartCount > 0 && (
+                        {count > 0 && (
                             <span className="absolute -top-2 -right-2 bg-orange-600 text-white text-xs font-bold  rounded-full w-4 h-4 flex items-center justify-center">
-                                {cartCount}
+                                {count}
                             </span>
                         )}
                     </button>
