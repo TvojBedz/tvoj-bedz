@@ -17,7 +17,7 @@ const allProducts = [
     })),
 ];
 
-export default function ShopPage({ searchParams }: { searchParams: { page: string } }) {
+export default async function ShopPage({ searchParams }: { searchParams: Record<string, string> }) {
     const page = parseInt(searchParams.page || "1");
     const totalPages = Math.ceil(allProducts.length / PRODUCTS_PER_PAGE);
     const startIndex = (page - 1) * PRODUCTS_PER_PAGE;
