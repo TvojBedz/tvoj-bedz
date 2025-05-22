@@ -4,6 +4,10 @@ export const NAV_ITEMS = [
         text: "Kako funkcioniše",
     },
     {
+        href: "cenovnik",
+        text: "Cenovnik",
+    },
+    {
         href: "bedzevi",
         text: "Bedževi",
     },

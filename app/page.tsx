@@ -1,5 +1,6 @@
 import HeroSection from "@/components/Sections/HeroSection";
 import HowItWorks from "@/components/Sections/HowItWorks";
+import PricingSection from "@/components/Sections/PriceSection";
 
 export default function Home() {
   return (
@@ -7,6 +8,7 @@ export default function Home() {
       <main className="flex flex-col">
         <HeroSection />
         <HowItWorks />
+        <PricingSection />
 
         <section
           id="bedzevi"
