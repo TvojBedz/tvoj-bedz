@@ -6,7 +6,6 @@ import { Menu, X, ShoppingCart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import MobileNavigation from "./MobileNavigation";
 import LinkText from "./LinkText";
-import { openLink } from "@/utils/links";
 import { NAV_ITEMS } from "@/constants/navItems";
 import { useRouter } from "next/navigation";
 
