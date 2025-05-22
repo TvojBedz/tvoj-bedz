@@ -1,3 +1,4 @@
+import FeaturedBadges from "@/components/Sections/FeaturedBadges";
 import HeroSection from "@/components/Sections/HeroSection";
 import HowItWorks from "@/components/Sections/HowItWorks";
 import PricingSection from "@/components/Sections/PriceSection";
@@ -10,6 +11,7 @@ export default function Home() {
         <HeroSection />
         <HowItWorks />
         <PricingSection />
+        <FeaturedBadges />
         <UserReviews />
 
         <section
