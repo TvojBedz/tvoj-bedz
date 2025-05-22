@@ -32,7 +32,7 @@ export default function UserReviewsCarousel() {
     return (
         <section className="py-12 bg-gray-50" id="recenzije">
             <div className="max-w-xl mx-auto px-4 text-center min-h-screen">
-                <h2 className="text-3xl font-bold mb-12">Recenzije korisnika</h2>
+                <h2 className="text-4xl font-bold mb-12">Recenzije korisnika</h2>
                 <div className="relative flex items-center justify-center gap-2">
                     {/* Strelica levo */}
                     <button

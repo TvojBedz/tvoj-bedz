@@ -36,7 +36,7 @@ const MobileNavigation = ({ open, setOpen, activeSection }: MobileNavigationProp
                 ))}
 
                 <Button
-                    className="w-full mt-2 bg-orange-600 text-white hover:bg-orange-700 transition duration-200"
+                    className="text-base w-full mt-2 bg-orange-600 text-white hover:bg-orange-700 transition duration-200"
                     onClick={() => setOpen(false)}
                 >
                     Dizajniraj svoj bedž

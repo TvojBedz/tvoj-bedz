@@ -4,7 +4,7 @@ import { BadgeDollarSign, Gift, Users } from "lucide-react";
 export default function PricingSection() {
     return (
         <section className="px-4 max-w-5xl mx-auto py-20 flex flex-col items-center justify-center text-gray-900 md:h-screen" id="cenovnik">
-            <div className="max-w-6xl mx-auto px-4 text-center">
+            <div className="max-w-6xl mx-auto px-4 text-center mt-4">
                 <h2 className="text-4xl font-bold mb-4">
                     Izaberi paket koji ti odgovara
                 </h2>
