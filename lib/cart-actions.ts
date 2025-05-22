@@ -1,5 +1,6 @@
 "use server";
 
+import Badge from "@/model/Badge";
 import { cookies } from "next/headers";
 
 export async function addToCart(formData: FormData) {

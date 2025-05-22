@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 
 const EXAMPLE_BADGES = Array.from({ length: 12 }, (_, i) => ({
     id: i + 1,
@@ -45,7 +46,7 @@ export default function FeaturedBadges() {
                 >
                     <div className="flex flex-col items-center">
                         <div className="w-20 h-20 rounded-full overflow-hidden bg-gray-200 mb-4">
-                            <img
+                            <Image
                                 src={EXAMPLE_BADGES[index].image}
                                 alt={EXAMPLE_BADGES[index].name}
                                 className="w-full h-full object-cover"

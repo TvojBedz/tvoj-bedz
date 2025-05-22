@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Image from "next/image";
 import AddToCartButton from "./AddToCartButton";
 import { returnPaginatedPages } from "@/utils/pagination";
+import { allProducts } from "@/model/Badge";
 
 export const metadata: Metadata = {
     title: "Shop | TvojBedž",
@@ -10,14 +11,7 @@ export const metadata: Metadata = {
 
 const PRODUCTS_PER_PAGE = 8;
 
-const allProducts = [
-    ...Array.from({ length: 120 }, (_, i) => ({
-        id: i + 1,
-        name: `Bedž #${i + 1}`,
-        image: `https://picsum.photos/seed/${i + 1}/200/200`,
-        price: "250 RSD",
-    })),
-];
+
 
 export default function Shop({ page }: { page: number }) {
     const totalPages = Math.ceil(allProducts.length / PRODUCTS_PER_PAGE);

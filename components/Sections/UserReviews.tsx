@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import Image from "next/image";
 
 const reviews = [
     {
@@ -54,7 +55,7 @@ export default function UserReviewsCarousel() {
                         >
                             <div className="flex flex-col items-center min-h-[250px]">
                                 <div className="w-20 h-20 rounded-full overflow-hidden bg-gray-200 mb-4">
-                                    <img
+                                    <Image
                                         src={reviews[index].avatar}
                                         alt={reviews[index].name}
                                         className="w-full h-full object-cover"
