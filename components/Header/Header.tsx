@@ -2,16 +2,19 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ShoppingCart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import MobileNavigation from "./MobileNavigation";
 import LinkText from "./LinkText";
 import { openLink } from "@/utils/links";
 import { NAV_ITEMS } from "@/constants/navItems";
+import { useRouter } from "next/navigation";
 
 export default function Header() {
     const [open, setOpen] = useState(false);
     const [activeSection, setActiveSection] = useState<string>("");
+    const router = useRouter();
+    const cartCount = 1; // Replace with actual cart count from your state management
 
     useEffect(() => {
         const handleScroll = () => {
@@ -58,11 +61,38 @@ export default function Header() {
                     <Button>
                         Dizajniraj svoj bedž
                     </Button>
+                    <button
+                        onClick={() => router.push("/checkout")}
+                        className="relative p-2"
+                        aria-label="Korpa"
+                    >
+                        <ShoppingCart className="w-6 h-6 text-black cursor-pointer hover:text-orange-600 transition duration-200" />
+                        {cartCount > 0 && (
+                            <span className="absolute -top-1 -right-1 bg-orange-600 text-white text-xs font-bold px-1.5 py-0.5 rounded-full">
+                                {cartCount}
+                            </span>
+                        )}
+                    </button>
                 </nav>
 
-                <button onClick={() => setOpen(!open)} className="md:hidden text-gray-700">
-                    {open ? <X size={24} /> : <Menu size={24} />}
-                </button>
+                <div className="md:hidden flex items-center space-x-4">
+                    <button
+                        onClick={() => router.push("/checkout")}
+                        className="relative md:hidden text-gray-700"
+                        aria-label="Korpa"
+                    >
+                        <ShoppingCart className="w-6 h-6 text-black cursor-pointer hover:text-orange-600 transition duration-200" />
+                        {cartCount > 0 && (
+                            <span className="absolute -top-2 -right-2 bg-orange-600 text-white text-xs font-bold  rounded-full w-4 h-4 flex items-center justify-center">
+                                {cartCount}
+                            </span>
+                        )}
+                    </button>
+
+                    <button onClick={() => setOpen(!open)} className="md:hidden text-gray-700">
+                        {open ? <X size={28} /> : <Menu size={28} />}
+                    </button>
+                </div>
             </div>
 
             <MobileNavigation
@@ -71,6 +101,6 @@ export default function Header() {
                 activeSection={activeSection}
             />
 
-        </header>
+        </header >
     );
 }
