@@ -17,7 +17,8 @@ const allProducts = [
     })),
 ];
 
-export default async function ShopPage({ searchParams }: { searchParams: Record<string, string> }) {
+export default async function ShopPage(props: { searchParams: Promise<any> }) {
+    const searchParams = await props.searchParams;
     const page = parseInt(searchParams.page || "1");
     const totalPages = Math.ceil(allProducts.length / PRODUCTS_PER_PAGE);
     const startIndex = (page - 1) * PRODUCTS_PER_PAGE;
