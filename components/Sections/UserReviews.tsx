@@ -33,11 +33,11 @@ export default function UserReviewsCarousel() {
         <section className="py-12 bg-gray-50" id="recenzije">
             <div className="max-w-xl mx-auto px-4 text-center min-h-screen">
                 <h2 className="text-3xl font-bold mb-8">Recenzije korisnika</h2>
-                <div className="relative flex items-center justify-center gap-4">
+                <div className="relative flex items-center justify-center gap-2">
                     {/* Strelica levo */}
                     <button
                         onClick={prev}
-                        className="p-4 rounded-full bg-white shadow hover:bg-gray-100 transition z-10"
+                        className="p-2 rounded-full bg-white shadow hover:bg-gray-100 transition z-10"
                     >
                         <ChevronLeft className="w-6 h-6" />
                     </button>
