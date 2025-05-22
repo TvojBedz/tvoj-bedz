@@ -21,8 +21,8 @@ export default function PricingSection() {
                                 <BadgeDollarSign className="w-8 h-8 mx-auto text-orange-600 mb-2" />
                                 <h3 className="text-xl font-semibold mb-2">Pojedinačni</h3>
                                 <p className="text-3xl font-bold text-orange-600 mb-4">250 RSD</p>
-                                <ul className="text-left text-muted-foreground space-y-2 text-base">
-                                    <li>✔️ Dizajniraš bedž po tvojoj meri</li>
+                                <ul className="text-left text-muted-foreground space-y-2 text-lg">
+                                    <li>✔️ Dizajniraj svoj bedž</li>
                                     <li>✔️ Online pregled bedža</li>
                                     <li>✔️ Brza i jeftina isporuka</li>
                                 </ul>
