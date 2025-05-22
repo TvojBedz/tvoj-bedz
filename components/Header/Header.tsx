@@ -41,7 +41,7 @@ export default function Header() {
 
 
     return (
-        <header className="w-full border-b bg-white shadow-sm sticky top-0 z-50">
+        <header className="w-full border-b bg-white/60 backdrop-blur-md shadow-md sticky top-0 z-50 rounded-b-xl">
             <div className="container mx-auto flex items-center justify-between p-4 px-6 md:px-20">
                 {/* Logo */}
                 <Link href="/#hero" scroll={false} onClick={(e) => openLink(e, 'hero')} className="text-2xl font-bold text-black">
