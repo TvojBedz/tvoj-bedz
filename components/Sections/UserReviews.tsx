@@ -56,6 +56,8 @@ export default function UserReviewsCarousel() {
                             <div className="flex flex-col items-center min-h-[250px]">
                                 <div className="w-20 h-20 rounded-full overflow-hidden bg-gray-200 mb-4">
                                     <Image
+                                        width={200}
+                                        height={200}
                                         src={reviews[index].avatar}
                                         alt={reviews[index].name}
                                         className="w-full h-full object-cover"

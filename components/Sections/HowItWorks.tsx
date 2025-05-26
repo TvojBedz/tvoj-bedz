@@ -1,10 +1,10 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { CheckCircle, UploadCloud, Settings2 } from "lucide-react";
+import Section from "./Section";
 
 export default function HowItWorks() {
     return (
-        <section id='kako-funkcionise' className="px-4 max-w-5xl mx-auto py-20 flex flex-col items-center justify-center text-gray-900 md:h-screen">
-            <h2 className="text-4xl font-bold mb-4 md: pb-10">Kako funkcioniše?</h2>
+        <Section sectionId="kako-funkcionise" title="Kako funkcioniše?">
             <div className="grid md:grid-cols-3 gap-6">
                 <Card className="rounded-2xl shadow-md hover:shadow-lg transition">
                     <CardContent className="p-6 flex flex-col items-center text-center">
@@ -36,6 +36,6 @@ export default function HowItWorks() {
                     </CardContent>
                 </Card>
             </div>
-        </section>
+        </Section>
     );
 }

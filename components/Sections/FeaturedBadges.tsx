@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import Section from "./Section";
 
 const EXAMPLE_BADGES = Array.from({ length: 12 }, (_, i) => ({
     id: i + 1,
@@ -26,12 +27,8 @@ export default function FeaturedBadges() {
     }, []);
 
     return (
-        <section className="py-16 text-center px-6 " id="bedzevi">
-            <h2 className="text-4xl font-bold mb-6">
-                Popularni bedževi
-            </h2>
-
-            <p className="mb-8 text-lg text-gray-700">
+        <Section sectionId="bedzevi" title="Popularni bedževi">
+            <p className="mb-8 text-lg text-gray-700 px-3">
                 Pogledaj najpopularnije bedževe koje su naši korisnici kreirali!
             </p>
 
@@ -42,11 +39,13 @@ export default function FeaturedBadges() {
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: -50 }}
                     transition={{ duration: 0.5 }}
-                    className="p-2 bg-white rounded-2xl shadow-lg md:max-w-md mx-auto"
+                    className="bg-white rounded-2xl shadow-lg md:max-w-md w-full max-w-[70vw] p-6 flex items-center justify-center hover:shadow-xl transition-shadow duration-300 cursor-pointer"
                 >
                     <div className="flex flex-col items-center">
                         <div className="w-20 h-20 rounded-full overflow-hidden bg-gray-200 mb-4">
                             <Image
+                                width={200}
+                                height={200}
                                 src={EXAMPLE_BADGES[index].image}
                                 alt={EXAMPLE_BADGES[index].name}
                                 className="w-full h-full object-cover"
@@ -56,7 +55,7 @@ export default function FeaturedBadges() {
                     </div>
                 </motion.div>
             </AnimatePresence>
-            <p className="mt-8 text-xs text-gray-700">
+            <p className="mt-8 text-xs text-gray-700 px-6">
                 Ovi bedževi su samo primeri. Naša platforma omogućava kreiranje
                 bedževa po vašoj meri!
             </p>
@@ -65,6 +64,6 @@ export default function FeaturedBadges() {
             <Link href="/shop">
                 <Button className="mt-8 px-6 text-base">Pogledaj sve bedževe</Button>
             </Link>
-        </section>
+        </Section>
     );
 }
