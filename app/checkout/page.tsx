@@ -14,7 +14,10 @@ export default function CheckoutPage() {
     const cookies = useCookies();
     const [submitted, setSubmitted] = useState(false);
 
-    const total = cart.reduce((sum, item) => sum + parseFloat(item.price) * item.quantity, 0);
+    const total = cart.reduce((acc, item) => {
+        const itemTotal = item.price * item.quantity;
+        return acc + itemTotal;
+    }, 0);
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
@@ -71,7 +74,7 @@ export default function CheckoutPage() {
                                 {cart.map((item) => (
                                     <li key={item.id} className="flex justify-between">
                                         <span>{item.name} × {item.quantity}</span>
-                                        <span>{(parseFloat(item.price) * item.quantity).toFixed(2)} RSD</span>
+                                        <span>{(item.price * item.quantity).toFixed(2)} RSD</span>
                                     </li>
                                 ))}
                             </ul>
