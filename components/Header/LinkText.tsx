@@ -1,15 +1,16 @@
-import { openLink } from "@/utils/links";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 interface LinkTextProps {
     href: string;
     text: string;
-    isActive?: boolean;
     setOpen?: (open: boolean) => void;
 }
 
 
-const LinkText = ({ href, text, isActive, setOpen }: LinkTextProps) => {
+const LinkText = ({ href, text, setOpen }: LinkTextProps) => {
+    const pathname = usePathname();
+    const isActive = pathname === `/${href}` || (pathname === "/" && href === "");
 
     const navLinkClass = () =>
         `py-2 px-3 rounded transition-colors ${isActive
@@ -20,15 +21,13 @@ const LinkText = ({ href, text, isActive, setOpen }: LinkTextProps) => {
 
     return (
         <Link
-            href={`/#${href}`}
+            href={`/${href}`}
             className={navLinkClass()}
             scroll={false}
-            onClick={(e) => {
-                openLink(e, href);
-                if (setOpen) {
-                    setOpen(false);
-                }
+            onClick={() => {
+                if (setOpen) setOpen(false); // Close mobile menu if setOpen is provided
             }}
+            aria-current={isActive ? "page" : undefined}
         >
             {text}
         </Link>

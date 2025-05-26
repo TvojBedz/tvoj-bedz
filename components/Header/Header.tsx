@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Menu, X, ShoppingCart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import MobileNavigation from "./MobileNavigation";
@@ -12,32 +12,8 @@ import { useCart } from "@/context/CartContext";
 
 export default function Header() {
     const [open, setOpen] = useState(false);
-    const [activeSection, setActiveSection] = useState<string>("");
     const router = useRouter();
     const { count } = useCart();
-
-    useEffect(() => {
-        const handleScroll = () => {
-            const sections = [...NAV_ITEMS.map((item => item.href), 'hero')] as string[];
-            const scrollPos = window.scrollY;
-
-            for (const id of sections) {
-                const el = document.getElementById(id);
-                if (el) {
-                    const offsetTop = el.offsetTop;
-                    const offsetBottom = offsetTop + el.offsetHeight;
-
-                    if (scrollPos >= offsetTop && scrollPos < offsetBottom) {
-                        setActiveSection(id);
-                        break;
-                    }
-                }
-            }
-        };
-
-        window.addEventListener("scroll", handleScroll);
-        return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
 
 
     return (
@@ -55,7 +31,6 @@ export default function Header() {
                             key={item.href}
                             href={item.href}
                             text={item.text}
-                            isActive={activeSection === item.href}
                         />
                     ))}
                     <Button>
@@ -98,7 +73,6 @@ export default function Header() {
             <MobileNavigation
                 open={open}
                 setOpen={setOpen}
-                activeSection={activeSection}
             />
 
         </header >

@@ -7,10 +7,9 @@ import { motion, AnimatePresence } from "framer-motion";
 interface MobileNavigationProps {
     open: boolean;
     setOpen: (open: boolean) => void;
-    activeSection: string;
 }
 
-const MobileNavigation = ({ open, setOpen, activeSection }: MobileNavigationProps) => {
+const MobileNavigation = ({ open, setOpen }: MobileNavigationProps) => {
     if (!open) {
         return null;
     }
@@ -30,7 +29,6 @@ const MobileNavigation = ({ open, setOpen, activeSection }: MobileNavigationProp
                         key={item.href}
                         href={item.href}
                         text={item.text}
-                        isActive={activeSection === item.href}
                         setOpen={setOpen}
                     />
                 ))}

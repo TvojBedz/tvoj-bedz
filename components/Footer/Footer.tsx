@@ -1,7 +1,6 @@
 "use client";
 
 import { NAV_ITEMS } from "@/constants/navItems";
-import { openLink } from "@/utils/links";
 import Link from "next/link";
 
 export default function Footer() {
@@ -19,9 +18,8 @@ export default function Footer() {
                     {NAV_ITEMS.map((item) => (
                         <Link
                             key={item.href}
-                            href={`/#${item.href}`}
+                            href={`/${item.href}`}
                             scroll={false}
-                            onClick={(e) => openLink(e, item.href)}
                             className="hover:text-black transition"
                         >
                             {item.text}
