@@ -4,6 +4,7 @@ import { useCart } from "@/context/CartContext";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import CartItem from "@/components/Cart/CartItem";
 import Section from "@/components/Sections/Section";
+import { Card, CardContent } from "@/components/ui/card";
 
 export default function CartPage() {
     const { cart, loading } = useCart();
@@ -19,11 +20,13 @@ export default function CartPage() {
         }
 
         return (
-            <div className="flex flex-col gap-4">
-                {cart.map((product) => (
-                    <CartItem key={product.id} product={product} />
-                ))}
-            </div>
+            <Card className="shadow-md p-0">
+                <CardContent className="flex flex-col gap-2 p-1 ">
+                    {cart.map((product) => (
+                        <CartItem key={product.id} product={product} />
+                    ))}
+                </CardContent>
+            </Card>
         );
     };
 

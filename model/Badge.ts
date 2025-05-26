@@ -2,7 +2,7 @@ interface Badge {
     id: string;
     name: string;
     image: string;
-    price: string;
+    price: number;
     quantity: number;
 }
 
@@ -13,7 +13,7 @@ export const allProducts: Badge[] = [
         id: `id-${i + 1}`,
         name: `Bedž #${i + 1}`,
         image: `https://picsum.photos/seed/${i + 1}/200/200`,
-        price: "250 RSD",
+        price: 250,
         quantity: 1,
     })),
 ]

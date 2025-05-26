@@ -1,18 +1,11 @@
 "use client";
 
+import Badge from "@/model/Badge";
 import { useCookies } from "next-client-cookies";
 import { createContext, useContext, useEffect, useState } from "react";
 
-interface CartItem {
-    id: string;
-    name: string;
-    image: string;
-    price: string;
-    quantity: number;
-}
-
 interface CartContextValue {
-    cart: CartItem[];
+    cart: Badge[];
     count: number;
     refreshCart: () => void;
     loading?: boolean;
@@ -22,7 +15,7 @@ const CartContext = createContext<CartContextValue | undefined>(undefined);
 
 export function CartProvider({ children }: { children: React.ReactNode }) {
     const cookies = useCookies();
-    const [cart, setCart] = useState<CartItem[]>([]);
+    const [cart, setCart] = useState<Badge[]>([]);
     const [loading, setLoading] = useState(true);
 
     const refreshCart = () => {

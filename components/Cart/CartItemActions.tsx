@@ -1,17 +1,14 @@
 import Badge from "@/model/Badge";
-import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
-import { Button } from "../ui/button";
-import { useState } from "react";
 import { useCart } from "@/context/CartContext";
 import { useCookies } from "next-client-cookies";
 import { Minus, Plus, Trash } from "lucide-react";
+import IconButton from "../ui/iconButton";
 
 interface CartItemActionsProps {
     product: Badge;
 }
 
 const CartItemActions = ({ product }: CartItemActionsProps) => {
-    const [animated, setAnimated] = useState(false);
     const { cart, refreshCart } = useCart();
     const cookies = useCookies();
 
@@ -24,56 +21,45 @@ const CartItemActions = ({ product }: CartItemActionsProps) => {
         );
         cookies.set("cart", JSON.stringify(updated));
         refreshCart();
-        setAnimated(true);
-        setTimeout(() => setAnimated(false), 200);
+    }
+
+    const removeFromCart = (id: string) => {
+        const updated = cart.filter(item => item.id !== id);
+        cookies.set("cart", JSON.stringify(updated));
+        refreshCart();
     }
 
     return (
         <div className="flex items-center gap-3">
-            <Tooltip>
-                <TooltipTrigger asChild>
-                    <Button
-                        size="icon"
-                        variant="outline"
-                        onClick={() => updateQuantity(product.id, -1)}
-                        className="rounded-full"
-                    >
-                        <Minus />
-                    </Button>
-                </TooltipTrigger>
-                <TooltipContent>Umanji količinu</TooltipContent>
-            </Tooltip>
 
-            <span className="text-xl font-semibold">
+            {product.quantity > 1 ?
+                <IconButton
+                    icon={<Minus />}
+                    onClick={() => updateQuantity(product.id, -1)}
+                    tooltip="Smanji količinu"
+                    additionalClass="text-gray-500 hover:bg-gray-100 hover:text-gray-600"
+                />
+                :
+                <IconButton
+                    icon={<Trash />}
+                    onClick={() => removeFromCart(product.id)}
+                    tooltip="Ukloni iz korpe"
+                    additionalClass="text-red-500 hover:bg-red-100 hover:text-red-600"
+                />
+            }
+
+            <span className="text-lg font-semibold">
                 {product.quantity}
             </span>
 
-            <Tooltip>
-                <TooltipTrigger asChild>
-                    <Button
-                        size="icon"
-                        variant="outline"
-                        onClick={() => updateQuantity(product.id, 1)}
-                        className="rounded-full"
-                    >
-                        <Plus />
-                    </Button>
-                </TooltipTrigger>
-                <TooltipContent>Povećaj količinu</TooltipContent>
-            </Tooltip>
-            <Tooltip>
-                <TooltipTrigger asChild>
-                    <Button
-                        size="icon"
-                        variant="outline"
-                        onClick={() => updateQuantity(product.id, -product.quantity)}
-                        className={`rounded-full text-red-500 hover:bg-red-100 transition-all ${animated ? 'animate-pulse' : ''}`}
-                    >
-                        <Trash />
-                    </Button>
-                </TooltipTrigger>
-                <TooltipContent>Ukloni iz korpe</TooltipContent>
-            </Tooltip>
+
+            <IconButton
+                icon={<Plus />}
+                onClick={() => updateQuantity(product.id, 1)}
+                tooltip="Povećaj količinu"
+                additionalClass="text-gray-500 hover:bg-gray-100 hover:text-gray-600"
+            />
+
 
         </div>
     );
