@@ -2,7 +2,7 @@
 
 import { useCart } from "@/context/CartContext";
 import { useCookies } from "next-client-cookies";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
