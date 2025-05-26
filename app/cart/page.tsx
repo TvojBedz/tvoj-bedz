@@ -1,13 +1,9 @@
 "use client";
 
-import Image from "next/image";
-import { useEffect, useState } from "react";
 import { useCart } from "@/context/CartContext";
-import { useCookies } from "next-client-cookies";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { TooltipProvider } from "@/components/ui/tooltip";
 import Link from "next/link";
 import ProductQuantity from "@/components/Cart/ProductQuantity";
 
