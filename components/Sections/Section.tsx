@@ -3,13 +3,16 @@ import React from 'react'
 interface SectionProps {
     sectionId: string;
     title?: string;
+    fullScreen?: boolean;
     children: React.ReactNode;
 }
 
-const Section = ({ sectionId, title, children }: SectionProps) => {
+const Section = ({ sectionId, title, fullScreen, children }: SectionProps) => {
+    const className = `px-4 max-w-5xl py-10 flex flex-col items-center text-gray-900 gap-6 text-center ${fullScreen ? 'h-screen justify-center' : ''}`;
+
     return (
         <section
-            className="px-4 mt-4 max-w-5xl  py-10 flex flex-col items-center justify-center text-gray-900 md:h-screen gap-6 text-center"
+            className={className}
             id={sectionId}
         >
             {title &&

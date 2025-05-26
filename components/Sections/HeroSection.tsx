@@ -5,7 +5,7 @@ import Section from "./Section";
 
 export default function HeroSection() {
     return (
-        <Section sectionId="hero">
+        <Section sectionId="hero" fullScreen>
             <div className="flex flex-col-reverse md:flex-row items-center justify-end">
                 <div className="w-full  text-center md:text-left space-y-4">
                     <h1 className="text-5xl sm:text-6xl font-extrabold text-gray-900 leading-tight">

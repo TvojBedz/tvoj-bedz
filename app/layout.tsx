@@ -17,9 +17,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <CookiesProvider>
       <CartProvider>
         <html lang="sr">
-          <body suppressHydrationWarning={true}>
+          <body suppressHydrationWarning={true} className="min-h-screen">
             <Header />
-            <main className=" bg-gray-50 min-h-screen flex flex-col items-center">
+            <main className="flex flex-col items-center">
               {children}
             </main>
             <Footer />
