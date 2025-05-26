@@ -14,10 +14,6 @@ export default function CheckoutPage() {
     const cookies = useCookies();
     const [submitted, setSubmitted] = useState(false);
 
-    useEffect(() => {
-        refreshCart();
-    }, []);
-
     const total = cart.reduce((sum, item) => sum + parseFloat(item.price) * item.quantity, 0);
 
     const handleSubmit = (e: React.FormEvent) => {
