@@ -15,6 +15,7 @@ interface CartContextValue {
     cart: CartItem[];
     count: number;
     refreshCart: () => void;
+    loading?: boolean;
 }
 
 const CartContext = createContext<CartContextValue | undefined>(undefined);
@@ -22,6 +23,7 @@ const CartContext = createContext<CartContextValue | undefined>(undefined);
 export function CartProvider({ children }: { children: React.ReactNode }) {
     const cookies = useCookies();
     const [cart, setCart] = useState<CartItem[]>([]);
+    const [loading, setLoading] = useState(true);
 
     const refreshCart = () => {
         const raw = cookies.get("cart");
@@ -35,6 +37,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
         } else {
             setCart([]);
         }
+        setLoading(false);
     };
 
     useEffect(() => {
@@ -44,7 +47,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     const count = cart.reduce((sum, item) => sum + item.quantity, 0);
 
     return (
-        <CartContext.Provider value={{ cart, count, refreshCart }}>
+        <CartContext.Provider value={{ cart, count, refreshCart, loading }}>
             {children}
         </CartContext.Provider>
     );

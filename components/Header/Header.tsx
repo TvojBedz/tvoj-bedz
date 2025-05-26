@@ -62,7 +62,7 @@ export default function Header() {
                         Dizajniraj svoj bedž
                     </Button>
                     <button
-                        onClick={() => router.push("/checkout")}
+                        onClick={() => router.push("/cart")}
                         className="relative p-2"
                         aria-label="Korpa"
                     >
@@ -77,7 +77,7 @@ export default function Header() {
 
                 <div className="md:hidden flex items-center space-x-4">
                     <button
-                        onClick={() => router.push("/checkout")}
+                        onClick={() => router.push("/cart")}
                         className="relative md:hidden text-gray-700"
                         aria-label="Korpa"
                     >
