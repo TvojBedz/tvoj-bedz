@@ -8,7 +8,7 @@ interface SectionProps {
 }
 
 const Section = ({ sectionId, title, fullScreen, children }: SectionProps) => {
-    const className = `px-4 max-w-5xl py-10 flex flex-col items-center text-gray-900 gap-6 w-full text-center ${fullScreen ? 'h-screen justify-center' : ''}`;
+    const className = `px-4 max-w-5xl py-10 flex flex-col items-center text-gray-900 gap-6 w-full text-center ${fullScreen ? 'md:h-screen justify-center' : ''}`;
 
     return (
         <section
