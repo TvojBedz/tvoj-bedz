@@ -17,7 +17,7 @@ const CartItemActions = ({ product }: CartItemActionsProps) => {
                 icon={<Minus />}
                 onClick={() => updateQuantity(product.id, -1)}
                 tooltip="Smanji količinu"
-                additionalClass="text-gray-500 hover:bg-gray-100 hover:text-gray-600"
+                additionalClass="text-red-500 hover:bg-red-100 hover:text-red-600"
             />
 
             <span className="text-lg font-semibold w-[30px] text-center text-gray-800">
