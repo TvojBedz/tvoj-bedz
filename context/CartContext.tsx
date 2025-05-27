@@ -8,6 +8,8 @@ interface CartContextValue {
     cart: Badge[];
     count: number;
     refreshCart: () => void;
+    updateQuantity: (id: string, delta: number) => void;
+    removeFromCart: (id: string) => void;
     loading?: boolean;
 }
 
@@ -33,6 +35,22 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
         setLoading(false);
     };
 
+    const updateQuantity = (id: string, delta: number) => {
+        const updated = cart.map(item =>
+            item.id === id
+                ? { ...item, quantity: Math.max(1, item.quantity + delta) }
+                : item
+        );
+        cookies.set("cart", JSON.stringify(updated));
+        refreshCart();
+    }
+
+    const removeFromCart = (id: string) => {
+        const updated = cart.filter(item => item.id !== id);
+        cookies.set("cart", JSON.stringify(updated));
+        refreshCart();
+    }
+
     useEffect(() => {
         refreshCart();
     }, []);
@@ -40,7 +58,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     const count = cart.reduce((sum, item) => sum + item.quantity, 0);
 
     return (
-        <CartContext.Provider value={{ cart, count, refreshCart, loading }}>
+        <CartContext.Provider value={{ cart, count, refreshCart, updateQuantity, removeFromCart, loading }}>
             {children}
         </CartContext.Provider>
     );

@@ -7,18 +7,20 @@ interface IconButtonProps {
     onClick: () => void;
     tooltip: string;
     additionalClass?: string;
+    disabled?: boolean;
 }
 
-const IconButton = ({ icon, onClick, tooltip, additionalClass }: IconButtonProps) => {
+const IconButton = ({ icon, onClick, tooltip, additionalClass, disabled }: IconButtonProps) => {
 
     return (
         <Tooltip>
             <TooltipTrigger asChild>
                 <Button
                     size="icon"
-                    variant="outline"
+                    variant='outline'
                     onClick={onClick}
-                    className={`w-8 h-8 rounded-full ${additionalClass}`}
+                    className={`w-5 h-5 rounded-full ${additionalClass}`}
+                    disabled={disabled}
                 >
                     {icon}
                 </Button>
