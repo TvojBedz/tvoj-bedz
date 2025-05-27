@@ -14,9 +14,9 @@ export function RemoveConfirmationDrawer({ open, onCancel, onConfirm }: Props) {
         <Drawer open={open} onOpenChange={(isOpen) => !isOpen && onCancel()}>
             <DrawerContent>
                 <DrawerHeader>
-                    <DrawerTitle>Ukloniti iz korpe?</DrawerTitle>
+                    <DrawerTitle>Ukloni bedž iz korpe?</DrawerTitle>
                 </DrawerHeader>
-                <DrawerFooter className="flex justify-end gap-2 mb-6">
+                <DrawerFooter className="flex justify-end gap-2 mb-2">
                     <Button variant="destructive" onClick={onConfirm}>
                         Ukloni
                     </Button>
