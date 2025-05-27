@@ -2,7 +2,7 @@ import Badge from "@/model/Badge";
 import Image from "next/image";
 import CartItemActions from "./CartItemActions";
 
-const IMAGE_SIZE = 100;
+const IMAGE_SIZE = 80;
 
 interface CartItemProps {
     product: Badge;
@@ -11,7 +11,7 @@ interface CartItemProps {
 const CartItem = ({ product }: CartItemProps) => {
 
     return (
-        <div key={product.id} className="flex gap-2 p-2 items-center  border-b border-gray-200 w-full ">
+        <div key={product.id} className="flex gap-4 p-1 items-center  border-b border-gray-200 w-full ">
             <Image
                 src={product.image}
                 alt={product.name}

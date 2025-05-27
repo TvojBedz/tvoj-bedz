@@ -19,7 +19,7 @@ const IconButton = ({ icon, onClick, tooltip, additionalClass, disabled }: IconB
                     size="icon"
                     variant='outline'
                     onClick={onClick}
-                    className={`w-5 h-5 rounded-full ${additionalClass}`}
+                    className={`w-7 h-7 rounded-full ${additionalClass}`}
                     disabled={disabled}
                 >
                     {icon}
