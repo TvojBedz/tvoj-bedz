@@ -1,5 +1,6 @@
 "use client";
 
+import { RemoveConfirmationDrawer } from "@/components/Cart/RemoveConfirmationDrawer";
 import Badge from "@/model/Badge";
 import { useCookies } from "next-client-cookies";
 import { createContext, useContext, useEffect, useState } from "react";
@@ -18,6 +19,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     const cookies = useCookies();
     const [cart, setCart] = useState<Badge[]>([]);
     const [loading, setLoading] = useState(true);
+    const [pendingRemoveId, setPendingRemoveId] = useState<string | null>(null);
 
     const refreshCart = () => {
         const raw = cookies.get("cart");
@@ -35,30 +37,47 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     };
 
     const updateQuantity = (id: string, delta: number) => {
-        const updated = cart
-            .map(item => {
-                if (item.id === id) {
-                    const newQuantity = item.quantity + delta;
-                    return newQuantity > 0 ? { ...item, quantity: newQuantity } : null;
-                }
-                return item;
-            })
-            .filter(Boolean); // removes nulls (i.e., removed items)
+        const item = cart.find(i => i.id === id);
+        if (!item) return;
+
+        const newQuantity = item.quantity + delta;
+        if (newQuantity <= 0) {
+            setPendingRemoveId(id);
+            return;
+        }
+
+        const updated = cart.map(item =>
+            item.id === id ? { ...item, quantity: newQuantity } : item
+        );
 
         cookies.set("cart", JSON.stringify(updated));
         refreshCart();
     };
 
+    const confirmRemove = () => {
+        if (!pendingRemoveId) return;
+        const updated = cart.filter(item => item.id !== pendingRemoveId);
+        cookies.set("cart", JSON.stringify(updated));
+        refreshCart();
+        setPendingRemoveId(null);
+    };
+
+    const count = cart.reduce((sum, item) => sum + item.quantity, 0);
 
     useEffect(() => {
         refreshCart();
     }, []);
 
-    const count = cart.reduce((sum, item) => sum + item.quantity, 0);
-
     return (
         <CartContext.Provider value={{ cart, count, refreshCart, updateQuantity, loading }}>
-            {children}
+            <>
+                {children}
+                <RemoveConfirmationDrawer
+                    open={!!pendingRemoveId}
+                    onCancel={() => setPendingRemoveId(null)}
+                    onConfirm={confirmRemove}
+                />
+            </>
         </CartContext.Provider>
     );
 }
