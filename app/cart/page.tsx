@@ -24,7 +24,7 @@ export default function CartPage() {
 
         if (cart.length === 0) {
             return (
-                <div className="flex items-center justify-center h-64">
+                <div className="flex items-center justify-center h-64 flex-col">
                     <p className="text-gray-600 text-center">Korpa je prazna</p>
                     <Button
                         className="mt-4"
