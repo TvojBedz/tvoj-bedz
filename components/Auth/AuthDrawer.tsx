@@ -8,8 +8,8 @@ export function AuthDrawer({ open, onOpenChange }: { open: boolean; onOpenChange
     const [mode, setMode] = useState<"login" | "register">("login");
 
     return (
-        <Drawer open={open} onOpenChange={onOpenChange} direction="top">
-            <DrawerContent>
+        <Drawer open={open} onOpenChange={onOpenChange} direction="bottom">
+            <DrawerContent className="w-full h-full">
                 <DrawerHeader>
                     <DrawerTitle className="text-center text-2xl font-semibold">
                         {mode === "login" ? "Prijava" : "Registracija"}
