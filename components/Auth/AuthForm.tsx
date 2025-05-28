@@ -101,7 +101,7 @@ export function AuthForm({ mode, setMode, onSuccess }: AuthFormProps) {
     };
 
     return (
-        <form onSubmit={handleSubmit} className="space-y-4 max-w-md mx-auto mb-4">
+        <form onSubmit={handleSubmit} className="space-y-4 max-w-md mx-auto">
             {mode === "register" && (
                 <InputField type="text" placeholder="Ime" value={name} onChange={(e) => setName(e.target.value)} error={errors.name} />
             )}
