@@ -9,7 +9,7 @@ export function AuthDrawer({ open, onOpenChange }: { open: boolean; onOpenChange
 
     return (
         <Drawer open={open} onOpenChange={onOpenChange} direction="bottom">
-            <DrawerContent className="w-full h-full">
+            <DrawerContent>
                 <DrawerHeader>
                     <DrawerTitle className="text-center text-2xl font-semibold">
                         {mode === "login" ? "Prijava" : "Registracija"}
