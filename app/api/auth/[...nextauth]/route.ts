@@ -28,6 +28,7 @@ const authOptions: NextAuthOptions = {
                     id: user._id.toString(),
                     name: user.name || user.email,
                     email: user.email,
+                    role: user.role,
                 };
             },
         }),
