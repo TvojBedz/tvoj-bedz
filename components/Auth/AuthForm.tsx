@@ -5,7 +5,7 @@ import { signIn } from "next-auth/react";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner"
 import { z } from "zod";
-import { InputField } from "./InputField";
+import { InputField, PasswordField } from "./InputField";
 import { AuthToggle } from "./AuthToggle";
 
 const loginSchema = z.object({
@@ -106,7 +106,7 @@ export function AuthForm({ mode, setMode, onSuccess }: AuthFormProps) {
                 <InputField type="text" placeholder="Ime" value={name} onChange={(e) => setName(e.target.value)} error={errors.name} />
             )}
             <InputField type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} error={errors.email} />
-            <InputField type="password" placeholder="Lozinka" value={password} onChange={(e) => setPassword(e.target.value)} error={errors.password} />
+            <PasswordField type="password" placeholder="Lozinka" value={password} onChange={(e) => setPassword(e.target.value)} error={errors.password} />
 
             <Button type="submit" className="w-full" disabled={loading}>
                 {loading ? "Obrada..." : mode === "login" ? "Prijavi se" : "Registruj se"}

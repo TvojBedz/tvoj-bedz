@@ -1,4 +1,6 @@
 import { Input } from "@/components/ui/input";
+import { useState } from "react";
+import { Eye, EyeOff } from "lucide-react";
 
 interface InputFieldProps {
     type: string;
@@ -12,6 +14,31 @@ export function InputField({ type, placeholder, value, onChange, error }: InputF
     return (
         <div>
             <Input type={type} placeholder={placeholder} value={value} onChange={onChange} />
+            {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
+        </div>
+    );
+}
+
+export function PasswordField({ value, onChange, error, placeholder = "Lozinka" }: InputFieldProps) {
+    const [visible, setVisible] = useState(false);
+
+    return (
+        <div className="relative">
+            <Input
+                type={visible ? "text" : "password"}
+                placeholder={placeholder}
+                value={value}
+                onChange={onChange}
+                className="pr-10"
+            />
+            <button
+                type="button"
+                onClick={() => setVisible(!visible)}
+                className="absolute right-2 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-gray-800"
+                tabIndex={-1}
+            >
+                {visible ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+            </button>
             {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
         </div>
     );
