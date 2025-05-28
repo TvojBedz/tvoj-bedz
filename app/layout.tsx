@@ -19,6 +19,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <SessionProvider>
       <CookiesProvider>
         <CartProvider>
+          <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
           <html lang="sr">
             <body suppressHydrationWarning={true} className="min-h-screen">
               <Header />
