@@ -9,7 +9,7 @@ interface MongooseGlobalCache {
 }
 
 declare global {
-    var mongoose: MongooseGlobalCache;
+    const mongoose: MongooseGlobalCache;
 }
 
 const globalWithMongoose = globalThis as typeof globalThis & {
