@@ -1,21 +1,35 @@
 import mongoose from "mongoose";
 
 const MONGODB_URI = process.env.MONGODB_URI!;
-
 if (!MONGODB_URI) throw new Error("Missing MONGODB_URI");
 
-let cached = (global as any).mongoose || { conn: null, promise: null };
+interface MongooseGlobalCache {
+    conn: typeof mongoose | null;
+    promise: Promise<typeof mongoose> | null;
+}
+
+declare global {
+    var mongoose: MongooseGlobalCache;
+}
+
+const globalWithMongoose = globalThis as typeof globalThis & {
+    mongoose: MongooseGlobalCache;
+};
+
+if (!globalWithMongoose.mongoose) {
+    globalWithMongoose.mongoose = { conn: null, promise: null };
+}
 
 export async function connectToDatabase() {
-    if (cached.conn) return cached.conn;
+    if (globalWithMongoose.mongoose.conn) return globalWithMongoose.mongoose.conn;
 
-    if (!cached.promise) {
-        cached.promise = mongoose.connect(MONGODB_URI, {
-            dbName: "auth-demo",
+    if (!globalWithMongoose.mongoose.promise) {
+        globalWithMongoose.mongoose.promise = mongoose.connect(MONGODB_URI, {
             bufferCommands: false,
+            dbName: "tvojbedz", // replace with your actual DB name
         });
     }
 
-    cached.conn = await cached.promise;
-    return cached.conn;
+    globalWithMongoose.mongoose.conn = await globalWithMongoose.mongoose.promise;
+    return globalWithMongoose.mongoose.conn;
 }

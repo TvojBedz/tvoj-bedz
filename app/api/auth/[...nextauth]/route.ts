@@ -4,8 +4,9 @@ import { connectToDatabase } from "@/lib/mongo";
 import bcrypt from "bcrypt";
 import { User, UserDoc } from "@/model/User";
 import { JWT } from "next-auth/jwt";
+import type { NextAuthOptions } from "next-auth";
 
-export const authOptions = {
+export const authOptions: NextAuthOptions = {
     providers: [
         CredentialsProvider({
             name: "Credentials",
@@ -32,7 +33,7 @@ export const authOptions = {
         }),
     ],
     session: {
-        strategy: "jwt" as "jwt"
+        strategy: "jwt"
     },
     callbacks: {
         async jwt({ token, user }: { token: JWT; user?: UserNA | undefined }) {
@@ -42,7 +43,7 @@ export const authOptions = {
             return token;
         },
         async session({ session, token }: { session: Session; token: JWT }) {
-            session.user = token.user as any;
+            session.user = token.user as UserNA;
             return session;
         }
     },
