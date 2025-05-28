@@ -9,6 +9,7 @@ import LinkText from "./LinkText";
 import { NAV_ITEMS } from "@/constants/navItems";
 import { useRouter } from "next/navigation";
 import { useCart } from "@/context/CartContext";
+import UserPopover from "../Auth/UserPopover";
 
 export default function Header() {
     const [open, setOpen] = useState(false);
@@ -48,6 +49,7 @@ export default function Header() {
                             </span>
                         )}
                     </button>
+                    <UserPopover />
                 </nav>
 
                 <div className="md:hidden flex items-center space-x-4">
@@ -63,6 +65,8 @@ export default function Header() {
                             </span>
                         )}
                     </button>
+
+                    <UserPopover />
 
                     <button onClick={() => setOpen(!open)} className="md:hidden text-gray-700">
                         {open ? <X size={28} /> : <Menu size={28} />}

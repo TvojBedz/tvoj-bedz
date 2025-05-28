@@ -5,6 +5,8 @@ import Footer from "@/components/Footer/Footer";
 import { Analytics } from "@vercel/analytics/next";
 import { CookiesProvider } from 'next-client-cookies/server';
 import { CartProvider } from "@/context/CartContext";
+import { SessionProvider } from "@/context/SessionProvider";
+import { Toaster } from "@/components/ui/sonner";
 
 
 export const metadata: Metadata = {
@@ -14,19 +16,22 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <CookiesProvider>
-      <CartProvider>
-        <html lang="sr">
-          <body suppressHydrationWarning={true} className="min-h-screen">
-            <Header />
-            <main className="flex flex-col items-center">
-              {children}
-            </main>
-            <Footer />
-            <Analytics />
-          </body>
-        </html>
-      </CartProvider>
-    </CookiesProvider>
+    <SessionProvider>
+      <CookiesProvider>
+        <CartProvider>
+          <html lang="sr">
+            <body suppressHydrationWarning={true} className="min-h-screen">
+              <Header />
+              <main className="flex flex-col items-center">
+                {children}
+              </main>
+              <Footer />
+              <Toaster richColors />
+              <Analytics />
+            </body>
+          </html>
+        </CartProvider>
+      </CookiesProvider>
+    </SessionProvider>
   );
 }
