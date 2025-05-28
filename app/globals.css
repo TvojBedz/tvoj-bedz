@@ -117,13 +117,6 @@ html {
   scroll-margin-top: 70px;
 }
 
-html,
-body {
-  height: 100%;
-  overflow-x: hidden;
-  -webkit-overflow-scrolling: touch;
-  padding-bottom: env(safe-area-inset-bottom);
-}
 
 
 @layer base {
