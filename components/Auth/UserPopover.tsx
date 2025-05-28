@@ -33,12 +33,25 @@ export default function UserPopover() {
                 </PopoverTrigger>
                 <PopoverContent>
                     {status === "authenticated" ? (
-                        <div className="space-y-2">
-                            <p className="font-semibold">{user?.name}</p>
-                            <p className="text-sm text-muted-foreground">{user?.email}</p>
+                        <div className="p-1">
+                            <div className="flex flex-row space-y-2">
+                                <Avatar className="h-12 w-12">
+                                    <AvatarImage
+                                        src={user?.image || avatar.src}
+                                        alt={user?.name || "Avatar"}
+                                    />
+                                    <AvatarFallback>
+                                        {user ? user.name?.charAt(0) : "U"}
+                                    </AvatarFallback>
+                                </Avatar>
+                                <div className="flex flex-col">
+                                    <p className="font-semibold">{user?.name}</p>
+                                    <p className="text-md text-muted-foreground">{user?.email}</p>
+                                </div>
+                            </div>
                             <Button
-                                variant="outline"
-                                className="w-full flex gap-2 items-center"
+                                variant="destructive"
+                                className="w-full flex gap-2 items-center mt-4"
                                 onClick={() => signOut()}
                             >
                                 <LogOut className="w-4 h-4" /> Logout

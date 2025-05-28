@@ -9,9 +9,11 @@ export function AuthDrawer({ open, onOpenChange }: { open: boolean; onOpenChange
 
     return (
         <Drawer open={open} onOpenChange={onOpenChange}>
-            <DrawerContent className="pb-10 px-4 pt-6">
+            <DrawerContent className="pb-10 px-4 sm:px-6 sm:pt-8 sm:pb-12 flex flex-col content-center justify-center max-w-md mx-auto">
                 <DrawerHeader>
-                    <DrawerTitle>{mode === "login" ? "Prijava" : "Registracija"}</DrawerTitle>
+                    <DrawerTitle className="text-center text-2xl font-semibold">
+                        {mode === "login" ? "Prijava" : "Registracija"}
+                    </DrawerTitle>
                 </DrawerHeader>
                 <AuthForm mode={mode} setMode={setMode} onSuccess={() => onOpenChange(false)} />
             </DrawerContent>

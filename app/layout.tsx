@@ -26,7 +26,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                 {children}
               </main>
               <Footer />
-              <Toaster richColors />
+              <Toaster richColors position="top-center" />
               <Analytics />
             </body>
           </html>
