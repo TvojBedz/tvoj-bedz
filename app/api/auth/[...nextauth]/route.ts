@@ -6,7 +6,7 @@ import { User, UserDoc } from "@/model/User";
 import { JWT } from "next-auth/jwt";
 import type { NextAuthOptions } from "next-auth";
 
-export const authOptions: NextAuthOptions = {
+const authOptions: NextAuthOptions = {
     providers: [
         CredentialsProvider({
             name: "Credentials",
