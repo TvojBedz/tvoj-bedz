@@ -45,7 +45,6 @@ export function AuthForm() {
                 toast.error("Neuspešna prijava: " + res.error);
             } else {
                 toast.success("Uspešno ste prijavljeni!");
-                window.location.href = "/";
             }
         } else {
             try {
