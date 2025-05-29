@@ -28,7 +28,6 @@ export function RegisterForm() {
         },
     });
 
-
     const onSubmit = async (values: RegisterValues) => {
         try {
             const res = await fetch("/api/register", {
