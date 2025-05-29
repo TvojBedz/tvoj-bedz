@@ -2,7 +2,6 @@
 
 import * as React from "react"
 
-import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import {
     Dialog,
@@ -22,10 +21,9 @@ import {
     DrawerTitle,
     DrawerTrigger,
 } from "@/components/ui/drawer"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
 import useMediaQuery from "@/hooks/useMediaQuery"
 import { LogIn } from "lucide-react"
+import { AuthForm } from "./AuthForm"
 
 export function AuthDialog() {
     const [open, setOpen] = React.useState(false)
@@ -54,7 +52,7 @@ export function AuthDialog() {
                             Make changes to your profile here. Click save when you are done.
                         </DialogDescription>
                     </DialogHeader>
-                    <ProfileForm />
+                    <AuthForm />
                 </DialogContent>
             </Dialog>
         )
@@ -77,7 +75,7 @@ export function AuthDialog() {
                         Make changes to your profile here. Click save when you are done.
                     </DrawerDescription>
                 </DrawerHeader>
-                <ProfileForm className="px-4" />
+                <AuthForm />
                 <DrawerFooter className="pt-2">
                     <DrawerClose asChild>
                         <Button variant="outline">Cancel</Button>
@@ -85,21 +83,5 @@ export function AuthDialog() {
                 </DrawerFooter>
             </DrawerContent>
         </Drawer>
-    )
-}
-
-function ProfileForm({ className }: React.ComponentProps<"form">) {
-    return (
-        <form className={cn("grid items-start gap-4", className)}>
-            <div className="grid gap-2">
-                <Label htmlFor="email">Email</Label>
-                <Input type="email" id="email" defaultValue="shadcn@example.com" />
-            </div>
-            <div className="grid gap-2">
-                <Label htmlFor="username">Username</Label>
-                <Input id="username" defaultValue="@shadcn" />
-            </div>
-            <Button type="submit">Save changes</Button>
-        </form>
     )
 }

@@ -1,118 +1,123 @@
-// "use client";
+"use client";
 
-// import { useState } from "react";
-// import { signIn } from "next-auth/react";
-// import { Button } from "@/components/ui/button";
-// import { toast } from "sonner"
-// import { z } from "zod";
-// import { InputField, PasswordField } from "./InputField";
-// import { AuthToggle } from "./AuthToggle";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import {
+    Form,
+    FormControl,
+    FormField,
+    FormItem,
+    FormLabel,
+    FormMessage,
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { toast } from "sonner";
+import { signIn } from "next-auth/react";
+import { loginSchema, registerSchema } from "@/utils/schemas/authSchema";
+import { AuthToggle } from "./AuthToggle";
 
-// const loginSchema = z.object({
-//     email: z.string().email({ message: "Nevalidan email." }),
-//     password: z.string().min(6, { message: "Lozinka mora imati najmanje 6 karaktera." }),
-// });
 
-// const registerSchema = loginSchema.extend({
-//     name: z.string().min(1, { message: "Unesite ime." }),
-// });
+export function AuthForm() {
+    const [mode, setMode] = useState<"login" | "register">("login");
 
-// interface AuthFormProps {
-//     mode: "login" | "register";
-//     setMode: (mode: "login" | "register") => void;
-//     onSuccess: () => void;
-// }
+    const form = useForm<any>({
+        resolver: zodResolver(mode === "login" ? loginSchema : registerSchema),
+        defaultValues: {
+            name: "",
+            email: "",
+            password: "",
+        },
+    });
 
-// export function AuthForm({ mode, setMode, onSuccess }: AuthFormProps) {
-//     const [name, setName] = useState("");
-//     const [email, setEmail] = useState("");
-//     const [password, setPassword] = useState("");
-//     const [errors, setErrors] = useState<{ [key: string]: string }>({});
-//     const [loading, setLoading] = useState(false);
+    const clearErrors = () => form.clearErrors();
 
-//     const clearErrors = () => setErrors({});
+    const onSubmit = async (values: any) => {
+        if (mode === "login") {
+            const res = await signIn("credentials", {
+                redirect: false,
+                email: values.email,
+                password: values.password,
+            });
 
-//     const handleSubmit = async (e: React.FormEvent) => {
-//         e.preventDefault();
-//         clearErrors();
+            if (res?.error) {
+                toast.error("Neuspešna prijava: " + res.error);
+            } else {
+                toast.success("Uspešno ste prijavljeni!");
+                window.location.href = "/";
+            }
+        } else {
+            try {
+                const res = await fetch("/api/register", {
+                    method: "POST",
+                    body: JSON.stringify(values),
+                    headers: { "Content-Type": "application/json" },
+                });
 
-//         const formData = { name, email, password };
-//         const result = mode === "login"
-//             ? loginSchema.safeParse(formData)
-//             : registerSchema.safeParse(formData);
+                if (!res.ok) throw new Error("Greška pri registraciji");
 
-//         if (!result.success) {
-//             const fieldErrors = result.error.flatten().fieldErrors;
-//             const mappedErrors: Record<string, string> = {};
-//             Object.entries(fieldErrors).forEach(([field, msg]) => {
-//                 if (msg?.length) mappedErrors[field] = msg[0];
-//             });
-//             setErrors(mappedErrors);
-//             return;
-//         }
+                toast.success("Uspešna registracija!");
+                setMode("login");
+                form.reset();
+            } catch {
+                toast.error("Registracija nije uspela.");
+            }
+        }
+    };
 
-//         setLoading(true);
+    return (
+        <div className="max-w-sm mx-auto space-y-4">
+            <Form {...form}>
+                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+                    {mode === "register" && (
+                        <FormField
+                            control={form.control}
+                            name="name"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Ime</FormLabel>
+                                    <FormControl>
+                                        <Input {...field} />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                    )}
+                    <FormField
+                        control={form.control}
+                        name="email"
+                        render={({ field }) => (
+                            <FormItem>
+                                <FormLabel>Email</FormLabel>
+                                <FormControl>
+                                    <Input type="email" {...field} />
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+                        )}
+                    />
+                    <FormField
+                        control={form.control}
+                        name="password"
+                        render={({ field }) => (
+                            <FormItem>
+                                <FormLabel>Lozinka</FormLabel>
+                                <FormControl>
+                                    <Input type="password" {...field} />
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+                        )}
+                    />
+                    <Button type="submit" className="w-full">
+                        {mode === "login" ? "Prijavi se" : "Registruj se"}
+                    </Button>
+                </form>
+            </Form>
 
-//         try {
-//             if (mode === "login") {
-//                 const res = await signIn("credentials", {
-//                     email,
-//                     password,
-//                     redirect: false,
-//                 });
-
-//                 if (!res?.ok) {
-//                     if (res?.error === "CredentialsSignin") {
-//                         setErrors({ email: "Neispravni podaci za prijavu." });
-//                     } else {
-//                         toast.error("Došlo je do greške prilikom prijave. Pokušajte ponovo kasnije.");
-//                     }
-//                     return;
-//                 }
-
-//                 toast("Uspešno ste se prijavili!", { description: "Dobrodošli nazad!" });
-//                 onSuccess();
-//             } else {
-//                 const res = await fetch("/api/register", {
-//                     method: "POST",
-//                     body: JSON.stringify({ name, email, password }),
-//                     headers: { "Content-Type": "application/json" },
-//                 });
-
-//                 const data = await res.json();
-//                 if (!res.ok) {
-//                     if (data.error) {
-//                         setErrors({ email: data.error });
-//                     } else {
-//                         toast.error("Došlo je do greške prilikom registracije. Pokušajte ponovo kasnije.");
-//                     }
-//                     return;
-//                 }
-
-//                 setMode("login");
-//                 setName("");
-//                 setPassword("");
-//             }
-//         } catch {
-//             toast.error("Došlo je do greške prilikom obrade zahteva. Pokušajte ponovo kasnije.");
-//         } finally {
-//             setLoading(false);
-//         }
-//     };
-
-//     return (
-//         <form onSubmit={handleSubmit} className="space-y-6 px-4 pb-4">
-//             {mode === "register" && (
-//                 <InputField type="text" placeholder="Ime" value={name} onChange={(e) => setName(e.target.value)} error={errors.name} />
-//             )}
-//             <InputField type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} error={errors.email} />
-//             <PasswordField type="password" placeholder="Lozinka" value={password} onChange={(e) => setPassword(e.target.value)} error={errors.password} />
-
-//             <Button type="submit" className="w-full" disabled={loading}>
-//                 {loading ? "Obrada..." : mode === "login" ? "Prijavi se" : "Registruj se"}
-//             </Button>
-
-//             <AuthToggle mode={mode} setMode={setMode} clearErrors={clearErrors} />
-//         </form>
-//     );
-// }
+            <AuthToggle mode={mode} setMode={setMode} clearErrors={clearErrors} />
+        </div>
+    );
+}
