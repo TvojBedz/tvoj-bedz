@@ -10,7 +10,6 @@ import {
     DialogDescription,
     DialogHeader,
     DialogTitle,
-    DialogTrigger,
 } from "@/components/ui/dialog"
 import {
     Drawer,
@@ -32,9 +31,6 @@ export function AuthDialog({ open, onOpenChange }: { open: boolean, onOpenChange
     if (isDesktop) {
         return (
             <Dialog open={open} onOpenChange={onOpenChange}>
-                <DialogTrigger asChild>
-                    <Button variant="outline">Edit Profile</Button>
-                </DialogTrigger>
                 <DialogContent className="sm:max-w-[425px]">
                     <DialogHeader>
                         <DialogTitle>Edit profile</DialogTitle>
