@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
-import { Input } from "../ui/input";
 
 interface InputFieldProps {
     type: string;
@@ -13,7 +12,7 @@ interface InputFieldProps {
 export function InputField({ type, placeholder, value, onChange, error }: InputFieldProps) {
     return (
         <div>
-            <Input
+            <input
                 className="text-md w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 type={type}
                 placeholder={placeholder}
@@ -30,7 +29,7 @@ export function PasswordField({ value, onChange, error, placeholder = "Lozinka" 
 
     return (
         <div className="relative">
-            <Input
+            <input
                 className="text-md w-full p-3 pr-10 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 type={visible ? "text" : "password"}
                 placeholder={placeholder}
