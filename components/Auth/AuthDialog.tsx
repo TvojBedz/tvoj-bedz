@@ -45,7 +45,8 @@ export function AuthDialog() {
                         className="w-full flex gap-2 items-center"
                     >
                         <LogIn className="w-4 h-4" /> Prijavi se
-                    </Button>                </DialogTrigger>
+                    </Button>
+                </DialogTrigger>
                 <DialogContent className="sm:max-w-[425px]">
                     <DialogHeader>
                         <DialogTitle>Edit profile</DialogTitle>
@@ -62,13 +63,11 @@ export function AuthDialog() {
     return (
         <Drawer open={open} onOpenChange={onOpenChange}>
             <DrawerTrigger asChild>
-                <Button variant="default">
-                    <Button
-                        variant="default"
-                        className="w-full flex gap-2 items-center"
-                    >
-                        <LogIn className="w-4 h-4" /> Prijavi se
-                    </Button>
+                <Button
+                    variant="default"
+                    className="w-full flex gap-2 items-center"
+                >
+                    <LogIn className="w-4 h-4" /> Prijavi se
                 </Button>
             </DrawerTrigger>
             <DrawerContent>
