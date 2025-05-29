@@ -1,4 +1,3 @@
-import { DrawerDialogDemo } from "@/components/Auth/DrawerDialog";
 import FeaturedBadges from "@/components/Sections/FeaturedBadges";
 import HeroSection from "@/components/Sections/HeroSection";
 import HowItWorks from "@/components/Sections/HowItWorks";
@@ -14,7 +13,6 @@ export default function Home() {
         <PricingSection />
         <FeaturedBadges />
         <UserReviews />
-        <DrawerDialogDemo />
 
         <section
           id="bedzevi"

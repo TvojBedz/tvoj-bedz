@@ -26,13 +26,12 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import useMediaQuery from "@/hooks/useMediaQuery"
 
-export function DrawerDialogDemo() {
-    const [open, setOpen] = React.useState(false)
+export function AuthDialog({ open, onOpenChange }: { open: boolean, onOpenChange: (open: boolean) => void }) {
     const isDesktop = useMediaQuery("(min-width: 768px)")
 
     if (isDesktop) {
         return (
-            <Dialog open={open} onOpenChange={setOpen}>
+            <Dialog open={open} onOpenChange={onOpenChange}>
                 <DialogTrigger asChild>
                     <Button variant="outline">Edit Profile</Button>
                 </DialogTrigger>
@@ -50,7 +49,7 @@ export function DrawerDialogDemo() {
     }
 
     return (
-        <Drawer open={open} onOpenChange={setOpen}>
+        <Drawer open={open} onOpenChange={onOpenChange}>
             <DrawerTrigger asChild>
                 <Button variant="outline">Edit Profile</Button>
             </DrawerTrigger>

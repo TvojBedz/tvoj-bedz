@@ -7,7 +7,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { LogIn, LogOut } from "lucide-react";
 import avatar from "@/public/avatar.png";
 import { useState } from "react";
-import { AuthDrawer } from "./AuthDrawer";
+import { AuthDialog } from "./AuthDialog";
 
 export default function UserPopover() {
     const { data: session, status } = useSession();
@@ -73,7 +73,7 @@ export default function UserPopover() {
                     )}
                 </PopoverContent>
             </Popover>
-            <AuthDrawer open={openDrawer} onOpenChange={setOpenDrawer} />
+            <AuthDialog open={openDrawer} onOpenChange={setOpenDrawer} />
         </>
     );
 }

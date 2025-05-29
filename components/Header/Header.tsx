@@ -20,12 +20,10 @@ export default function Header() {
     return (
         <header className={`w-full border-b bg-white shadow-sm sticky top-0 z-50 transition-all duration-300 ${!open ? 'backdrop-blur-md bg-white/70' : ''}`}>
             <div className="container mx-auto flex items-center justify-between p-4 px-6 md:px-20">
-                {/* Logo */}
                 <Link href="/" className="text-2xl font-bold text-black">
                     TvojBedž
                 </Link>
 
-                {/* Desktop nav */}
                 <nav className="hidden md:flex items-center space-x-6 text-sm">
                     {NAV_ITEMS.map((item) => (
                         <LinkText
