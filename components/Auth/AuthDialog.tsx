@@ -10,6 +10,7 @@ import {
     DialogDescription,
     DialogHeader,
     DialogTitle,
+    DialogTrigger,
 } from "@/components/ui/dialog"
 import {
     Drawer,
@@ -19,17 +20,32 @@ import {
     DrawerFooter,
     DrawerHeader,
     DrawerTitle,
+    DrawerTrigger,
 } from "@/components/ui/drawer"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import useMediaQuery from "@/hooks/useMediaQuery"
+import { LogIn } from "lucide-react"
 
-export function AuthDialog({ open, onOpenChange }: { open: boolean, onOpenChange: (open: boolean) => void }) {
+export function AuthDialog() {
+    const [open, setOpen] = React.useState(false)
     const isDesktop = useMediaQuery("(min-width: 768px)")
+
+    const onOpenChange = (open: boolean) => {
+        setOpen(open)
+    }
+
 
     if (isDesktop) {
         return (
             <Dialog open={open} onOpenChange={onOpenChange}>
+                <DialogTrigger asChild>
+                    <Button
+                        variant="default"
+                        className="w-full flex gap-2 items-center"
+                    >
+                        <LogIn className="w-4 h-4" /> Prijavi se
+                    </Button>                </DialogTrigger>
                 <DialogContent className="sm:max-w-[425px]">
                     <DialogHeader>
                         <DialogTitle>Edit profile</DialogTitle>
@@ -45,6 +61,16 @@ export function AuthDialog({ open, onOpenChange }: { open: boolean, onOpenChange
 
     return (
         <Drawer open={open} onOpenChange={onOpenChange}>
+            <DrawerTrigger asChild>
+                <Button variant="default">
+                    <Button
+                        variant="default"
+                        className="w-full flex gap-2 items-center"
+                    >
+                        <LogIn className="w-4 h-4" /> Prijavi se
+                    </Button>
+                </Button>
+            </DrawerTrigger>
             <DrawerContent>
                 <DrawerHeader className="text-left">
                     <DrawerTitle>Edit profile</DrawerTitle>

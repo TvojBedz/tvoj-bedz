@@ -4,15 +4,12 @@ import { useSession, signOut } from "next-auth/react";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { LogIn, LogOut } from "lucide-react";
+import { LogOut } from "lucide-react";
 import avatar from "@/public/avatar.png";
-import { useState } from "react";
 import { AuthDialog } from "./AuthDialog";
-import { DrawerTrigger } from "../ui/drawer";
 
 export default function UserPopover() {
     const { data: session, status } = useSession();
-    const [openDrawer, setOpenDrawer] = useState(false);
 
     const user = session?.user;
 
@@ -63,19 +60,11 @@ export default function UserPopover() {
                             <p className="text-md">
                                 Trenutno niste prijavljeni
                             </p>
-                            <DrawerTrigger asChild>
-                                <Button
-                                    variant="default"
-                                    className="w-full flex gap-2 items-center"
-                                >
-                                    <LogIn className="w-4 h-4" /> Prijavi se
-                                </Button>
-                            </DrawerTrigger>
+                            <AuthDialog />
                         </div>
                     )}
                 </PopoverContent>
             </Popover>
-            <AuthDialog open={openDrawer} onOpenChange={setOpenDrawer} />
         </>
     );
 }
