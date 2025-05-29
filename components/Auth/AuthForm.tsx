@@ -18,7 +18,6 @@ import { signIn } from "next-auth/react";
 import { AuthValues, loginSchema, registerSchema } from "@/utils/schemas/authSchema";
 import { AuthToggle } from "./AuthToggle";
 
-
 export function AuthForm() {
     const [mode, setMode] = useState<"login" | "register">("login");
 
