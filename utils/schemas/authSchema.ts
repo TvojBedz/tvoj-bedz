@@ -8,3 +8,7 @@ export const loginSchema = z.object({
 export const registerSchema = loginSchema.extend({
     name: z.string().min(2, { message: "Name is required" }),
 });
+
+type LoginValues = z.infer<typeof loginSchema>;
+type RegisterValues = z.infer<typeof registerSchema>;
+export type AuthValues = LoginValues | RegisterValues;

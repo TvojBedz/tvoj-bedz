@@ -15,14 +15,14 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { signIn } from "next-auth/react";
-import { loginSchema, registerSchema } from "@/utils/schemas/authSchema";
+import { AuthValues, loginSchema, registerSchema } from "@/utils/schemas/authSchema";
 import { AuthToggle } from "./AuthToggle";
 
 
 export function AuthForm() {
     const [mode, setMode] = useState<"login" | "register">("login");
 
-    const form = useForm<any>({
+    const form = useForm<AuthValues>({
         resolver: zodResolver(mode === "login" ? loginSchema : registerSchema),
         defaultValues: {
             name: "",
@@ -33,7 +33,7 @@ export function AuthForm() {
 
     const clearErrors = () => form.clearErrors();
 
-    const onSubmit = async (values: any) => {
+    const onSubmit = async (values: { email: string; password: string; name?: string }) => {
         if (mode === "login") {
             const res = await signIn("credentials", {
                 redirect: false,
