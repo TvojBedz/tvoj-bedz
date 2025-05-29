@@ -40,7 +40,7 @@ export function RegisterForm() {
 
             toast.success("Registration successful!");
         } catch (err) {
-            toast.error("Registration failed");
+            toast.error("Registration failed - " + (err instanceof Error ? err.message : "Unknown error"));
         }
     };
 
