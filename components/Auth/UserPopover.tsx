@@ -8,6 +8,7 @@ import { LogIn, LogOut } from "lucide-react";
 import avatar from "@/public/avatar.png";
 import { useState } from "react";
 import { AuthDialog } from "./AuthDialog";
+import { DrawerTrigger } from "../ui/drawer";
 
 export default function UserPopover() {
     const { data: session, status } = useSession();
@@ -62,13 +63,14 @@ export default function UserPopover() {
                             <p className="text-md">
                                 Trenutno niste prijavljeni
                             </p>
-                            <Button
-                                variant="default"
-                                className="w-full flex gap-2 items-center"
-                                onClick={() => setOpenDrawer(true)}
-                            >
-                                <LogIn className="w-4 h-4" /> Prijavi se
-                            </Button>
+                            <DrawerTrigger asChild>
+                                <Button
+                                    variant="default"
+                                    className="w-full flex gap-2 items-center"
+                                >
+                                    <LogIn className="w-4 h-4" /> Prijavi se
+                                </Button>
+                            </DrawerTrigger>
                         </div>
                     )}
                 </PopoverContent>
