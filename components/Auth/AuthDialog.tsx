@@ -46,9 +46,6 @@ export function AuthDialog({ open, onOpenChange }: { open: boolean, onOpenChange
 
     return (
         <Drawer open={open} onOpenChange={onOpenChange}>
-            <DrawerTrigger asChild>
-                <Button variant="outline">Edit Profile</Button>
-            </DrawerTrigger>
             <DrawerContent>
                 <DrawerHeader className="text-left">
                     <DrawerTitle>Edit profile</DrawerTitle>
