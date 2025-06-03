@@ -13,20 +13,6 @@ export default function Home() {
         <PricingSection />
         <FeaturedBadges />
         <UserReviews />
-
-        <section
-          id="bedzevi"
-          className="min-h-screen flex flex-col items-center justify-center px-6 bg-gray-50 text-center"
-        >
-          <div>
-            <h2 className="text-3xl font-semibold mb-6">Popularni bedževi</h2>
-            <p className="max-w-screen-md mx-auto text-gray-700 text-lg">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vel
-              eros sit amet lorem.
-            </p>
-          </div>
-        </section>
-
         <section
           id="kontakt"
           className="min-h-screen flex flex-col items-center justify-center px-6 bg-white text-center"

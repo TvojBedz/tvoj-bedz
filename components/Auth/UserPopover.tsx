@@ -20,20 +20,20 @@ export default function UserPopover() {
                     <Button variant="ghost" size="icon">
                         <Avatar>
                             <AvatarImage
-                                src={user?.image || avatar.src}
+                                src={user?.image as string}
                                 alt={user?.name || "Avatar"}
                             />
                             <AvatarFallback>
-                                {user ? user.name?.charAt(0) : "U"}
+                                {user ? user.name?.charAt(0) : avatar.src}
                             </AvatarFallback>
                         </Avatar>
                     </Button>
                 </PopoverTrigger>
                 <PopoverContent>
                     {status === "authenticated" ? (
-                        <div className="p-1">
-                            <div className="flex flex-row space-y-2">
-                                <Avatar className="h-12 w-12">
+                        <div>
+                            <div className="flex flex-row items-center gap-2">
+                                <Avatar>
                                     <AvatarImage
                                         src={user?.image as string}
                                         alt={user?.name || "Avatar"}
