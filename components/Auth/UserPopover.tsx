@@ -33,7 +33,7 @@ export default function UserPopover() {
                     {status === "authenticated" ? (
                         <div>
                             <div className="flex flex-row items-center gap-2">
-                                <Avatar>
+                                <Avatar className="w-10 h-10">
                                     <AvatarImage
                                         src={user?.image as string}
                                         alt={user?.name || "Avatar"}
