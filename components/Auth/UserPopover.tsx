@@ -20,7 +20,7 @@ export default function UserPopover() {
                     <Button variant="ghost" size="icon">
                         <Avatar>
                             <AvatarImage
-                                src={user?.image as string}
+                                src={user ? user?.image as string : avatar.src}
                                 alt={user?.name || "Avatar"}
                             />
                             <AvatarFallback>
