@@ -57,7 +57,7 @@ export default function PricingSection() {
                 </div>
             </div>
 
-            <p className="text-sm text-muted-foreground mt-8">
+            <p className="text-sm text-muted-foreground mt-4">
                 📢 Za veće porudžbine (50+ kom) kontaktiraj nas za posebnu ponudu!
             </p>
         </Section>

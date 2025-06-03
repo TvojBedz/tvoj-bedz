@@ -13,6 +13,10 @@ export default function UserPopover() {
 
     const user = session?.user;
 
+    if (status === "loading") {
+        return null
+    }
+
     return (
         <>
             <Popover>
@@ -35,7 +39,7 @@ export default function UserPopover() {
                             <div className="flex flex-row items-center gap-2">
                                 <Avatar className="w-10 h-10">
                                     <AvatarImage
-                                        src={user?.image as string}
+                                        src={user ? user?.image as string : avatar.src}
                                         alt={user?.name || "Avatar"}
                                     />
                                     <AvatarFallback>
