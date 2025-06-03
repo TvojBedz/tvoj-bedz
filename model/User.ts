@@ -10,6 +10,7 @@ const UserSchema = new Schema({
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
     role: { type: String, enum: Object.values(UserRole), default: UserRole.User },
+    image: { type: String, default: "" },
 });
 
 export const User = models.User || model("User", UserSchema);
@@ -20,5 +21,6 @@ export type UserDoc = {
     name: string;
     email: string;
     password: string;
+    image: string;
     role: UserRole;
 };

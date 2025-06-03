@@ -35,16 +35,16 @@ export default function UserPopover() {
                             <div className="flex flex-row space-y-2">
                                 <Avatar className="h-12 w-12">
                                     <AvatarImage
-                                        src={user?.image || avatar.src}
+                                        src={user?.image as string}
                                         alt={user?.name || "Avatar"}
                                     />
                                     <AvatarFallback>
-                                        {user ? user.name?.charAt(0) : "U"}
+                                        {user ? user.name?.charAt(0) : avatar.src}
                                     </AvatarFallback>
                                 </Avatar>
                                 <div className="flex flex-col">
                                     <p className="font-semibold">{user?.name}</p>
-                                    <p className="text-md text-muted-foreground">{user?.email}</p>
+                                    <p className="text-sm text-muted-foreground">{user?.email}</p>
                                 </div>
                             </div>
                             <Button
