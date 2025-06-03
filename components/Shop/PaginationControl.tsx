@@ -1,7 +1,7 @@
 "use client";
 
 import { type ReactNode, useCallback } from "react";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 import { cn } from "@/lib/utils";
 import {
     Pagination,
@@ -32,7 +32,6 @@ export function PaginationWithLinks({
     page,
     pageSearchParam,
 }: PaginationWithLinksProps) {
-    const router = useRouter();
     const pathname = usePathname();
     const searchParams = useSearchParams();
 
