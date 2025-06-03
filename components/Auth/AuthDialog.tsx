@@ -6,7 +6,6 @@ import { Button } from "@/components/ui/button"
 import {
     Dialog,
     DialogContent,
-    DialogDescription,
     DialogHeader,
     DialogTitle,
     DialogTrigger,
@@ -15,7 +14,6 @@ import {
     Drawer,
     DrawerClose,
     DrawerContent,
-    DrawerDescription,
     DrawerFooter,
     DrawerHeader,
     DrawerTitle,
@@ -47,10 +45,9 @@ export function AuthDialog() {
                 </DialogTrigger>
                 <DialogContent className="sm:max-w-[425px]">
                     <DialogHeader>
-                        <DialogTitle>Edit profile</DialogTitle>
-                        <DialogDescription>
-                            Make changes to your profile here. Click save when you are done.
-                        </DialogDescription>
+                        <DialogTitle>
+                            Prijava
+                        </DialogTitle>
                     </DialogHeader>
                     <AuthForm />
                 </DialogContent>
@@ -70,15 +67,16 @@ export function AuthDialog() {
             </DrawerTrigger>
             <DrawerContent>
                 <DrawerHeader className="text-left">
-                    <DrawerTitle>Edit profile</DrawerTitle>
-                    <DrawerDescription>
-                        Make changes to your profile here. Click save when you are done.
-                    </DrawerDescription>
+                    <DrawerTitle>
+                        Prijava
+                    </DrawerTitle>
                 </DrawerHeader>
                 <AuthForm />
                 <DrawerFooter className="pt-2">
                     <DrawerClose asChild>
-                        <Button variant="outline">Cancel</Button>
+                        <Button variant="outline">
+                            Zatvori
+                        </Button>
                     </DrawerClose>
                 </DrawerFooter>
             </DrawerContent>
