@@ -65,8 +65,8 @@ export default function DesignPage() {
     };
 
     return (
-        <div className="max-w-4xl mx-auto p-6 flex flex-col gap-4 select-none">
-            <h1 className="text-3xl md:text-5xl font-bold text-left">
+        <div className="px-4 max-w-5xl py-4 flex flex-col text-gray-900 gap-6 w-full">
+            <h1 className="text-5xl font-bold text-left">
                 Dizajniraj svoj bedž
             </h1>
 
@@ -89,7 +89,7 @@ export default function DesignPage() {
 
                 <label
                     htmlFor="image"
-                    className="border border-dashed border-gray-400 hover:border-gray-600 rounded-lg px-4 py-6 flex flex-col items-center justify-center text-center cursor-pointer transition-colors bg-gray-50 hover:bg-gray-100"
+                    className="border border-dashed border-gray-400 hover:border-gray-600 rounded-lg px-2 py-3 flex flex-col items-center justify-center text-center cursor-pointer transition-colors bg-gray-50 hover:bg-gray-100"
                 >
                     {imageSrc ? (
                         <>
@@ -98,16 +98,7 @@ export default function DesignPage() {
                         </>
                     ) : (
                         <>
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                className="h-8 w-8 text-gray-500 mb-2"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                                strokeWidth={2}
-                            >
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a2 2 0 002 2h12a2 2 0 002-2v-1M12 12v9m0-9l-3 3m3-3l3 3M12 3v9" />
-                            </svg>
+
                             <p className="text-sm text-gray-600">Klikni ili prevuci sliku ovde</p>
                             <p className="text-xs text-gray-400 mt-1">Podržani formati: JPG, PNG</p>
                         </>
