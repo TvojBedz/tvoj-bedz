@@ -3,6 +3,7 @@ import { Button } from '../ui/button';
 import LinkText from './LinkText';
 import { NAV_ITEMS } from '@/constants/navItems';
 import { motion, AnimatePresence } from "framer-motion";
+import { useRouter } from "next/navigation";
 
 interface MobileNavigationProps {
     open: boolean;
@@ -10,6 +11,8 @@ interface MobileNavigationProps {
 }
 
 const MobileNavigation = ({ open, setOpen }: MobileNavigationProps) => {
+    const router = useRouter();
+
     if (!open) {
         return null;
     }
@@ -35,7 +38,10 @@ const MobileNavigation = ({ open, setOpen }: MobileNavigationProps) => {
 
                 <Button
                     className="text-base w-full mt-2 bg-orange-600 text-white hover:bg-orange-700 transition duration-200"
-                    onClick={() => setOpen(false)}
+                    onClick={() => {
+                        router.push("/design");
+                        setOpen(false)
+                    }}
                 >
                     Dizajniraj svoj bedž
                 </Button>

@@ -32,7 +32,7 @@ export default function Header() {
                             text={item.text}
                         />
                     ))}
-                    <Button>
+                    <Button onClick={() => router.push("/design")}>
                         Dizajniraj svoj bedž
                     </Button>
                     <button
