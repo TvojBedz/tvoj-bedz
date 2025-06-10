@@ -66,7 +66,7 @@ export default function DesignPage() {
 
     return (
         <div className="px-4 max-w-5xl py-4 flex flex-col text-gray-900 gap-6 w-full">
-            <h1 className="text-5xl font-bold text-left">
+            <h1 className="text-4xl md:text-5xl font-bold text-left">
                 Dizajniraj svoj bedž
             </h1>
 
@@ -114,25 +114,23 @@ export default function DesignPage() {
                 />
             </div>
 
-            {/* Izbor veličine */}
 
+            {imageSrc &&
+                <div className="flex flex-col gap-2">
+                    <Label htmlFor="zoom">Zumiranje slike</Label>
+                    <input
+                        id="zoom"
+                        type="range"
+                        min="1"
+                        max="2.5"
+                        step="0.01"
+                        value={zoom}
+                        onChange={(e) => setZoom(parseFloat(e.target.value))}
+                        className="w-full"
+                    />
+                </div>
+            }
 
-            {/* Zumiranje */}
-            <div className="flex flex-col gap-2">
-                <Label htmlFor="zoom">Zumiranje slike</Label>
-                <input
-                    id="zoom"
-                    type="range"
-                    min="1"
-                    max="2.5"
-                    step="0.01"
-                    value={zoom}
-                    onChange={(e) => setZoom(parseFloat(e.target.value))}
-                    className="w-full"
-                />
-            </div>
-
-            {/* Pregled slike uvek srednje veličine, bez obzira na izbor */}
             <div>
                 <Label>Pregled</Label>
                 <Card className="mt-2 w-fit">
