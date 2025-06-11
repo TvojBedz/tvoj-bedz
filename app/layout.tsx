@@ -23,7 +23,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           <html lang="sr">
             <body suppressHydrationWarning={true} className="min-h-screen">
               <Header />
-              <main className="flex flex-col items-center">
+              <main className="flex flex-col items-center min-h-screen">
                 {children}
               </main>
               <Footer />
