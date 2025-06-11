@@ -15,8 +15,10 @@ export default function HeroSection() {
                         Odaberi boju, ubaci svoju sliku ili tekst, i kreiraj bedž koji je baš po tvojoj meri. Ako nemaš inspiraciju, tu su i naši predlozi!
                     </p>
                     <div className="flex flex-col sm:flex-row justify-center md:justify-start gap-3 w-full sm:w-auto pt-2">
-                        <Link href="#bedzevi" className="w-full sm:w-auto">
-                            <Button className="text-lg font-semibold px-6 py-6 w-full sm:w-auto bg-orange-600 text-white hover:bg-orange-700 transition duration-200">
+                        <Link href="/design" className="w-full sm:w-auto">
+                            <Button
+                                className="text-lg font-semibold px-6 py-6 w-full sm:w-auto bg-orange-600 text-white hover:bg-orange-700 transition duration-200"
+                            >
                                 Dizajniraj svoj bedž
                             </Button>
                         </Link>

@@ -19,7 +19,7 @@ export default function Header() {
 
     return (
         <header className={`w-full border-b bg-white shadow-sm sticky top-0 z-50 transition-all duration-300 ${!open ? 'backdrop-blur-md bg-white/70' : ''}`}>
-            <div className="container mx-auto flex items-center justify-between p-4 px-6 md:px-20">
+            <div className=" flex items-center justify-between p-4 px-6 md:px-20">
                 <Link href="/" className="text-2xl font-bold text-black">
                     TvojBedž
                 </Link>
